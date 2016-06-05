@@ -32,7 +32,7 @@
 Follow [these](https://toolbelt.heroku.com/windows) instructions
 
 ## Setting up Heroku
-If you have not already, create a Heroku account [here]: heroku.com.
+If you have not already, create a Heroku account [here](heroku.com).
 
 1. Run `heroku login` and enter your account info.
 2. Run `heroku git:clone -a buteam3` to clone the heroku project to your local machine
@@ -41,13 +41,13 @@ If you have not already, create a Heroku account [here]: heroku.com.
 
 
 ## Running your dev environment
-You'll need to install **Maven** first.
+You'll need to install **[Maven](https://maven.apache.org/)** first.
 
 ##### Mac
 `brew install maven`
 
 ##### PC
-[instructions]: http://www.mkyong.com/maven/how-to-install-maven-in-windows/
+[instructions](http://www.mkyong.com/maven/how-to-install-maven-in-windows/)
 
 Once you have maven.
 
