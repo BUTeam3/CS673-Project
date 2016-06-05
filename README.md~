@@ -1,7 +1,7 @@
 # CS673-Project
 
 ### Class Documents
-[Meeting Minutes]:(https://drive.google.com/drive/u/0/folders/0B_3YzwwsXS7NZDNHRVhXaENwYVk)
+[Meeting Minutes]: https://drive.google.com/drive/u/0/folders/0B_3YzwwsXS7NZDNHRVhXaENwYVk
 [Quad Reports]: https://drive.google.com/drive/u/0/folders/0BwFLA3yVKsC2dmdUTE5xTllXOGM
 [Presentations]: https://drive.google.com/drive/u/0/folders/0BwFLA3yVKsC2UGJoUmxOWnR3QWM
 
@@ -15,11 +15,11 @@
 
 ## Installing Heroku
 
-##### Mac
+### Mac
 1. If you don't already have [homebrew]: http://brew.sh/ follow the instructions
 2. Run `brew install heroku` to install heroku
 
-##### PC
+### PC
 Follow [these]: https://toolbelt.heroku.com/windows instructions
 
 ## Setting up Heroku
@@ -34,12 +34,12 @@ If you have not already, create a Heroku account [here]: heroku.com.
 ## Running your dev environment
 You'll need to install **Maven** first.
 
-##### Mac
+### Mac
 ```
 brew install maven
 ```
 
-#### PC
+## PC
 [instructions]: http://www.mkyong.com/maven/how-to-install-maven-in-windows/
 
 Once you have maven.
