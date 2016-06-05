@@ -32,7 +32,7 @@
 Follow [these](https://toolbelt.heroku.com/windows) instructions
 
 ## Setting up Heroku
-If you have not already, create a Heroku account [here](heroku.com).
+If you have not already, create a Heroku account [here](https://signup.heroku.com/).
 
 1. Run `heroku login` and enter your account info.
 2. Run `heroku git:clone -a buteam3` to clone the heroku project to your local machine
