@@ -49,10 +49,21 @@ You'll need to install **[Maven](https://maven.apache.org/)** first.
 ##### PC
 [instructions](http://www.mkyong.com/maven/how-to-install-maven-in-windows/)
 
+And install **Postgres**
+
+[mac](https://devcenter.heroku.com/articles/heroku-postgresql#set-up-postgres-on-mac)
+
+[pc](https://devcenter.heroku.com/articles/heroku-postgresql#set-up-postgres-on-windows)
+
 And add the env variable for the postgress db to your local environment.
+
+##### Mac
 ```
-export JDBC_DATABASE_URL='jdbc:postgresql://ec2-54-221-253-87.compute-1.amazonaws.com:5432/d5n7m5f5cvrbr5?user=oopglfyxdggazj&password=pAMFKzXf71sos-Vs-D2XBa4kDI&sslmode=require&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory'
+set JDBC_DATABASE_URL='jdbc:postgresql://ec2-54-221-253-87.compute-1.amazonaws.com:5432/d5n7m5f5cvrbr5?user=oopglfyxdggazj&password=pAMFKzXf71sos-Vs-D2XBa4kDI&sslmode=require&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory'
 ```
+
+##### PC
+
 
 Now you can run
 
