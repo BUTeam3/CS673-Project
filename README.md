@@ -41,36 +41,26 @@ If you have not already, create a Heroku account [here](https://signup.heroku.co
 
 
 ## Running your dev environment
-You'll need to install **[Maven](https://maven.apache.org/)** first.
+You'll need to install some things first first.
 
 ##### Mac
-`brew install maven`
+1. Install maven `brew install maven`
+2. Install postgres `brew install postgresql`
+3. Add our database to your local environemtn variables `export JDBC_DATABASE_URL='jdbc:postgresql://ec2-54-221-253-87.compute-1.amazonaws.com:5432/d5n7m5f5cvrbr5?user=oopglfyxdggazj&password=pAMFKzXf71sos-Vs-D2XBa4kDI&sslmode=require&ssl=t\
+rue&sslfactory=org.postgresql.ssl.NonValidatingFactory'`
 
 ##### PC
-[instructions](http://www.mkyong.com/maven/how-to-install-maven-in-windows/)
-
-And install **Postgres**
-
-[mac](https://devcenter.heroku.com/articles/heroku-postgresql#set-up-postgres-on-mac)
-
-[pc](https://devcenter.heroku.com/articles/heroku-postgresql#set-up-postgres-on-windows)
-
-And add the env variable for the postgress db to your local environment.
-
-##### Mac
-```
-set JDBC_DATABASE_URL='jdbc:postgresql://ec2-54-221-253-87.compute-1.amazonaws.com:5432/d5n7m5f5cvrbr5?user=oopglfyxdggazj&password=pAMFKzXf71sos-Vs-D2XBa4kDI&sslmode=require&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory'
-```
-
-##### PC
+1. Install maven  [instructions](http://www.mkyong.com/maven/how-to-install-maven-in-windows/)
+2. Install postgres [download](http://www.enterprisedb.com/products-services-training/pgdownload)
+3. Add our database to your local environemtn variables	`set	JDBC_DATABASE_URL='jdbc:postgresql://ec2-54-221-253-87.compute-1.amazonaws.com:5432/d5n7m5f5cvrbr5?user=oopglfyxdggazj&password=pAMFKzXf71sos-Vs-D2XBa4kDI&sslmode=require&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory'`
 
 
-Now you can run
+Once you have installed everything you can run:
 
 1. `mvn clean install` to recompile project.
 2. `heroku local web` to spin up a local dev server.
 
-You can access your local server at http://localhost:5000
+Your local server is now accessable at http://localhost:5000
 
 ## Pushing to git
 When you are satisfied with your branch changes locally you can push to our git using `git push origin <branch name>`.
