@@ -49,7 +49,10 @@ You'll need to install **[Maven](https://maven.apache.org/)** first.
 ##### PC
 [instructions](http://www.mkyong.com/maven/how-to-install-maven-in-windows/)
 
-Once you have maven.
+And add the env variable for the postgress db to your local environment.
+`export JDBC_DATABASE_URL='jdbc:postgresql://ec2-54-221-253-87.compute-1.amazonaws.com:5432/d5n7m5f5cvrbr5?user=oopglfyxdggazj&password=pAMFKzXf71sos-Vs-D2XBa4kDI&sslmode=require&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory'`
+
+Now you can run
 
 1. Run `mvn clean install` to recompile project.
 2. Run `heroku local web` to spin up a local dev server.
