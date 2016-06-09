@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.heroku.demo;
+package com.buteam3;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -42,7 +42,7 @@ public class HomeController {
         List<Record> records = repository.findAll();
         model.addAttribute("records", records);
         model.addAttribute("insertRecord", new Record());
-        return "home";
+        return "index";
     }
 
     @RequestMapping(method = RequestMethod.POST)
