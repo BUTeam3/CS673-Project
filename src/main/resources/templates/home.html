@@ -44,19 +44,19 @@
     <hr />
     <div class="row">
         <div  class="col-sm-3">
-            <h2>Done</h2>
+            <h4>Done</h4>
             <div id="done_board" class="board"></div>
         </div>
         <div  class="col-sm-3">
-            <h2>Current</h2>
+            <h4>Current</h4>
             <div id="current_board" class="board"></div>
         </div>
         <div  class="col-sm-3">
-            <h2>Backlog</h2>
+            <h4>Backlog</h4>
             <div id="backlog_board" class="board"></div>
         </div>
         <div  class="col-sm-3">
-            <h2>Icebox</h2>
+            <h4>Icebox</h4>
             <div id="icebox_board" class="board">
                 <div th:each="record : ${records}">
                     <span th:text="${record.data}" th:id="${record.id}"></span>
