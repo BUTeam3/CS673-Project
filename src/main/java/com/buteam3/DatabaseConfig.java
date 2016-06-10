@@ -1,4 +1,4 @@
-package com.heroku.demo;
+package com.buteam3;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;

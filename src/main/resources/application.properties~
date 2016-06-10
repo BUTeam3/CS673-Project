@@ -1,0 +1,12 @@
+# Database Config
+# Un-comment these lines to connect to a database. When commented out, you automatically get an in-memory-database.
+#spring.jpa.hibernate.ddl-auto=update
+
+spring.datasource.url=System.getenv("JDBC_DATABASE_URL")
+#spring.datasource.url=${JDBC_DATABASE_URL}
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.datasource.maxActive=10
+spring.datasource.maxIdle=5
+spring.datasource.minIdle=2
+spring.datasource.initialSize=5
+spring.datasource.removeAbandoned=true
