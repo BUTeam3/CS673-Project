@@ -1,0 +1,34 @@
+
+
+body {
+	background-color: white;
+	}
+
+#login {
+	margin-top:.5em;
+}
+
+
+#columns .col-md-12{
+	padding:20px;
+	}
+#columns tbody{
+	display:block;
+	height:410px;
+	overflow-y:auto;
+}
+#columns td{
+	width: 225px;
+}
+
+.modal-body .form-horizontal .col-sm-2,
+.modal-body .form-horizontal .col-sm-10 {
+    width: 100%
+}
+
+.modal-body .form-horizontal .control-label {
+    text-align: left;
+}
+.modal-body .form-horizontal .col-sm-offset-2 {
+    margin-left: 15px;
+}
