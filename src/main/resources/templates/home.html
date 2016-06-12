@@ -10,13 +10,28 @@
 </head>
 <body>
 <div class="container">
-    <div class="page-header">
-        <h1>BU Team 3</h1>
-    </div>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">BU Team 3</a>
+            </div>
+            <!--/* displayed if account IS NOT null, indicating that the user IS logged in */-->
+            <div th:if="${account}" class="navbar-right">
+                <p class="navbar-text" th:inline="text">Hello, [[${account.email}]]!</p>
+                <a th:href="@{/logout}" class="btn btn-danger navbar-btn">Logout</a>
+            </div>
+
+            <!--/* displayed if account IS null, indicating that the user IS NOT logged in */-->
+            <div th:unless="${account}" class="navbar-right">
+                <a th:href="@{/login}" class="btn btn-success navbar-btn">Login</a>
+            </div>
+        </div>
+    </nav>
 
     <div class="row">
         <div class="col-md-12 col-lg-6">
             <form th:object="${insertRecord}" method="POST">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                 <div class="form-group">
                     <label for="data">Create a new issue</label>
                     <input id="data" type="text" class="form-control" placeholder="Issue" th:field="*{data}" />
