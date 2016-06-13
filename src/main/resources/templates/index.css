@@ -8,6 +8,15 @@ body {
 	margin-top:.5em;
 }
 
+.btn-primary {
+    color: #fff;
+    background-color: black;
+    border-color: #2e6da4;
+    width: 100%;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    font-size: 10px;
+}
 
 #columns .col-md-12{
 	padding:20px;
@@ -21,7 +30,6 @@ body {
 	width: 225px;
 }
 
-
 .modal-body .form-horizontal .col-sm-2,
 .modal-body .form-horizontal .col-sm-10 {
     width: 100%
@@ -32,4 +40,12 @@ body {
 }
 .modal-body .form-horizontal .col-sm-offset-2 {
     margin-left: 15px;
+}
+
+select {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    width: 100%;
+    text-align: center;
 }

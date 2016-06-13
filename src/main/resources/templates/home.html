@@ -55,26 +55,35 @@
                         </div>
                         <!-- Modal Body -->
                         <div class="modal-body">
-                            <form name="newTask" class="form-horizontal" role="form">
+                            <form name="newTask" class="form-horizontal" role="form" th:object="${insertRecord}" method="POST">
                               <div class="form-group">
                                 <label class="col-sm-2"
-                                      for="taskName" >Name: </label><br></br>
+                                      for="taskName" >Name: </label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control"
                                         id="taskName" placeholder="Task Name"/>
-                                </div><br></br><br></br>
+                                </div><br></br>
                                 <label class="col-sm-2"
-                                      for="assignee" >Assignee: </label><br></br>
+                                      for="assignee" >Assignee: </label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control"
                                         id="assignee" placeholder="Assignee Name"/>
-                                </div><br></br><br></br>
-                                  <label class="col-sm-2"
-                                        for="assignee" >Comment: </label><br></br>
+                                </div>
+                                <br></br>
+                                  <label class="col-sm-2" for="comment">Comments:</label>
                                   <div class="col-sm-10">
-                                      <input type="text" class="form-control"
-                                          id="comment" placeholder="Comment Here"/>
+                                  <textarea class="form-control" id="comment" rows="3"></textarea>
                                   </div><br></br><br></br>
+                                    <label class="col-sm-2" for="taskLoc">Task Location:</label>
+                                    <div class="col-sm-10">
+                                    <select multiple class="form-control" id="taskLoc">
+                                      <option selected="selected" disabled>Please select task location...</option>
+                                      <option value="done">Done</option>
+                                      <option value="current">Current</option>
+                                      <option value="backlog">Backlog</option>
+                                      <option value="icebox">Icebox</option>
+                                    </select></div>
+                                  <br></br>
                               </div>
 							  </form>
                         </div>
