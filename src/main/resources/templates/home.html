@@ -1,283 +1,146 @@
 <!DOCTYPE HTML>
-<!--
-  Copyright 2015 Benedikt Ritter
-
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-
-      http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
--->
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Spring Boot Heroku Example</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
-	<link rel="stylesheet" href="./index.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.1/dragula.min.css" />
+    <link rel="stylesheet" href="css/index.css" />
 </head>
 <body>
-
-
 <div class="container">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid"> 
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">BU Team 3</a>
+            </div>
+            <!--/* displayed if account IS NOT null, indicating that the user IS logged in */-->
+            <div th:if="${account}" class="navbar-right">
+                <p class="navbar-text" th:inline="text">Hello, [[${account.email}]]!</p>
+                <a th:href="@{/logout}" class="btn btn-danger navbar-btn">Logout</a>
+            </div>
 
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<div class="navbar-header">
-			<a class="navbar-brand" href="#">Project 3</a>
-			</div>
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
-				<li><a href="#">Page 1</a></li>
-				<li><a href="#">Page 2</a></li> 
-				<li><a href="#">Page 3</a></li> 
-			</ul>
-				<form class="navbar-form navbar-right" role="form" id="login">
-					<div class="form-group">
-						<label class="sr-only" for="email">Email:</label>
-						<input type="email" class="form-control" id="email" placeholder="Enter email">
-					</div>
-					<div class="form-group">
-						<label class="sr-only" for="pwd">Password:</label>
-						<input type="password" class="form-control" id="pwd" placeholder="Enter password">
-					</div>
-					<button type="submit" class="btn btn-default">Login</button>
-				</form>
-		</div>
-	</nav>
-	
+            <!--/* displayed if account IS null, indicating that the user IS NOT logged in */-->
+            <div th:unless="${account}" class="navbar-right">
+                <a th:href="@{/login}" class="btn btn-success navbar-btn">Login</a>
+            </div>
+        </div>
+    </nav>
 
-
-	
-	
-    <div class="page-header">
-        <h1>Spring Boot Heroku Example</h1>	
-    </div>
-
-
-
-    
-
-
-
-	
-	
     <div class="row">
         <div class="col-md-12 col-lg-6">
-            <form th:object>    
-			<div class="form-group">
-                    <label for="data">Record to insert</label>
-                    <input id="data" type="text" class="form-control" placeholder="Lorem ipsum" th:field="*{data}" />
+
+            <form th:object="${insertRecord}" method="POST">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                <div class="form-group">
+                    <label for="data">Create a new issue</label>
+                    <input id="data" type="text" class="form-control" placeholder="Issue" th:field="*{data}" />
                 </div>
                 <button type="submit" class="btn btn-default">Submit</button>
             </form>
+
+                        <!-- Button trigger modal -->
+            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalHorizontal">
+                Create New Task
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog"
+                 aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <button type="button" class="close"
+                               data-dismiss="modal">
+                                   <span aria-hidden="true">&times;</span>
+                                   <span class="sr-only">Close</span>
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">
+                                Create a new task
+                            </h4>
+                        </div>
+                        <!-- Modal Body -->
+                        <div class="modal-body">
+                            <form name="newTask" class="form-horizontal" role="form" th:object="${insertRecord}" method="POST">
+                              <div class="form-group">
+
+                                <label class="col-sm-2"
+                                      for="taskName" >Name: </label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control"
+                                        id="taskName" placeholder="Task Name"/>
+                                </div><br></br>
+                                <label class="col-sm-2"
+                                      for="assignee" >Assignee: </label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control"
+                                        id="assignee" placeholder="Assignee Name"/>
+                                </div>
+                                <br></br>
+                                  <label class="col-sm-2" for="comment">Comments:</label>
+                                  <div class="col-sm-10">
+                                  <textarea class="form-control" id="comment" rows="3"></textarea>
+                                  </div><br></br><br></br>
+
+
+                                    <label class="col-sm-2" for="taskLoc">Task Location:</label>
+                                    <div class="col-sm-10">
+                                    <select multiple class="form-control" id="taskLoc">
+                                      <option selected="selected" disabled>Please select task location...</option>
+                                      <option value="done">Done</option>
+                                      <option value="current">Current</option>
+                                      <option value="backlog">Backlog</option>
+                                      <option value="icebox">Icebox</option>
+                                    </select></div>
+                                  <br></br><br></br>
+                              </div>
+                        </div>
+                        <!-- Modal Footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default"
+                                    data-dismiss="modal">
+                                        Close
+                            </button>
+                            <button type="submit" value="Submit" class="btn btn-primary">
+                                Submit
+                            </button></form></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-		
-    </div>
 
     <hr />
-    <div class="row" id="columns">
-		<div class="col-md-3">
-		<div class="col-md-12">
-			<table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Records</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>test 1</td>
-                    </tr>
-                    <tr>
-                        <td>test 2</td>
-                    </tr>
-                    <tr>
-                        <td>test 2</td>
-                    </tr>
-                    <tr>
-                        <td>test 3</td>
-                    </tr>
-                    <tr>
-                        <td>test 4</td>
-                    </tr>
-                    <tr>
-                        <td>test 5</td>
-                    </tr>
-                    <tr>
-                        <td>test 6</td>
-                    </tr>
-                    <tr>
-                        <td>test 7</td>
-                    </tr>
-                    <tr>
-                        <td>ey</td>
-                    </tr>
-                    <tr>
-                        <td>aa</td>
-                    </tr>
-                    <tr>
-                        <td>gosugamer</td>
-                    </tr>
-					<tr>
-                        <td>gosugamer1</td>
-                    </tr>
-                </tbody>
-            </table>
-		</div>
-		</div>
-		<div class="col-md-3">
-		<div class="col-md-12">
-			<table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Records</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>test 1</td>
-                    </tr>
-                    <tr>
-                        <td>test 2</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>test 3</td>
-                    </tr>
-                    <tr>
-                        <td>test 4</td>
-                    </tr>
-                    <tr>
-                        <td>test 5</td>
-                    </tr>
-                    <tr>
-                        <td>test 6</td>
-                    </tr>
-                    <tr>
-                        <td>test 7</td>
-                    </tr>
-                    <tr>
-                        <td>ey</td>
-                    </tr>
-                    <tr>
-                        <td>aa</td>
-                    </tr>
-                    <tr>
-                        <td>gosugamer</td>
-                    </tr>
-                </tbody>
-            </table>
-		</div>
-		</div>
-		<div class="col-md-3">
-		<div class="col-md-12">
-			<table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Records</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>test 1</td>
-                    </tr>
-                    <tr>
-                        <td>test 2</td>
-                    </tr>
-                    <tr>
-                        <td>test 2</td>
-                    </tr>
-                    <tr>
-                        <td>test 3</td>
-                    </tr>
-                    <tr>
-                        <td>test 4</td>
-                    </tr>
-                    <tr>
-                        <td>test 5</td>
-                    </tr>
-                    <tr>
-                        <td>test 6</td>
-                    </tr>
-                    <tr>
-                        <td>test 7</td>
-                    </tr>
-                    <tr>
-                        <td>ey</td>
-                    </tr>
-                    <tr>
-                        <td>aa</td>
-                    </tr>
-                    <tr>
-                        <td>gosugamer</td>
-                    </tr>
-                </tbody>
-            </table> 
-		</div>
-		</div>
-		<div class="col-md-3">
-		<div class="col-md-12">
-			<table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Records</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>test 1</td>
-                    </tr>
-                    <tr>
-                        <td>test 2</td>
-                    </tr>
-                    <tr>
-                        <td>test 2</td>
-                    </tr>
-                    <tr>
-                        <td>test 3</td>
-                    </tr>
-                    <tr>
-                        <td>test 4</td>
-                    </tr>
-                    <tr>
-                        <td>test 5</td>
-                    </tr>
-                    <tr>
-                        <td>test 6</td>
-                    </tr>
-                    <tr>
-                        <td>test 7</td>
-                    </tr>
-                    <tr>
-                        <td>ey</td>
-                    </tr>
-                    <tr>
-                        <td>aa</td>
-                    </tr>
-                    <tr>
-                        <td>gosugamer</td>
-                    </tr>
-                </tbody>
-            </table> 
-		</div>
-		</div>
-	</div>
+    <div class="row">
+        <div  class="col-sm-3">
+            <h4>Done</h4>
+            <div id="done_board" class="board"></div>
+        </div>
+        <div  class="col-sm-3">
+            <h4>Current</h4>
+            <div id="current_board" class="board"></div>
+        </div>
+        <div  class="col-sm-3">
+            <h4>Backlog</h4>
+            <div id="backlog_board" class="board"></div>
+        </div>
+        <div  class="col-sm-3">
+            <h4>Icebox</h4>
+            <div id="icebox_board" class="board">
+                <div th:each="record : ${records}">
+                    <span th:text="${record.data}" th:id="${record.id}"></span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Latest compiled and minified JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.1/dragula.min.js'></script>
+<script src="js/index.js"></script>
 </body>
 </html>
