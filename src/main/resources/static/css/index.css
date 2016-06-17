@@ -95,3 +95,101 @@ h2 {
 .modal-body .form-horizontal .col-sm-offset-2 {
     margin-left: 15px;
 }
+=======
+body {
+	background-image:url("../../background.jpg");
+	background-repeat: no-repeat;
+	background-attachment:fixed;
+	background-size: 100%;
+	background-position:center bottom;
+	padding: 20px;
+}
+
+.navbar-brand {
+	text-transform:uppercase;
+	font-family:"GULIMCHE";
+	font-color:black;
+	font-size: 6em;
+}
+
+.container-fluid {
+	margin-right:15px;
+}
+
+.btn {
+	background-color:black;
+	font-family:consolas;
+	text-transform:uppercase;
+}
+
+h2 {
+	color: #333;
+}
+
+.board {
+	border: 1px solid grey;
+	padding: 10px;
+	margin-top:47px;
+	overflow-y:auto;
+	height:400px;
+}
+
+.board div {
+	background: #f9f9f9;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	margin: 10px;
+	padding: 10px;
+	color: #333;
+	cursor: move;
+}
+
+
+#login {
+	margin-top:.5em;
+}
+
+.col-sm-3 {
+	background-size:100% auto;
+	background-position: top center;
+	background-repeat:no-repeat;
+	height:475px;
+	display:block;
+
+}
+
+#done {
+	background-image:url("../../done.png");
+}
+
+#current {
+	background-image:url("../../current.png");
+}
+
+#backlog {
+	background-image:url("../../backlog.png");
+}
+
+#icebox {
+	background-image:url("../../icebox.png");
+}
+
+#columns .col-md-12{
+	padding:20px;
+	}
+	
+#columns tbody{
+	display:block;
+	height:410px;
+	overflow-y:auto;
+}
+#columns td{
+	width: 225px;
+}
+
+.modal-body .form-horizontal .control-label {
+    text-align: left;
+}
+.modal-body .form-horizontal .col-sm-offset-2 {
+    margin-left: 15px;
+}
