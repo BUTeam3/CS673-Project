@@ -6,7 +6,7 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.1/dragula.min.css" />
-    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="../static/css/index.css" />
 </head>
 <body>
 <div class="container">
@@ -64,38 +64,36 @@
                         <!-- Modal Body -->
                         <div class="modal-body">
                             <form name="newTask" class="form-horizontal" role="form" th:object="${insertRecord}" method="POST">
-                              <div class="form-group">
+							<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                            <div class="form-group">
 
-                                <label class="col-sm-2"
-                                      for="taskName" >Name: </label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control"
-                                        id="taskName" placeholder="Task Name"/>
-                                </div><br></br>
-                                <label class="col-sm-2"
-                                      for="assignee" >Assignee: </label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control"
-                                        id="assignee" placeholder="Assignee Name"/>
-                                </div>
-                                <br></br>
-                                  <label class="col-sm-2" for="comment">Comments:</label>
-                                  <div class="col-sm-10">
-                                  <textarea class="form-control" id="comment" rows="3"></textarea>
-                                  </div><br></br><br></br>
-
-
-                                    <label class="col-sm-2" for="taskLoc">Task Location:</label>
+                                <label class="col-sm-2" for="taskName" >Name: </label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control"
+											id="taskName" placeholder="Task Name"/>
+									</div><br/>
+                                <label class="col-sm-2" for="assignee" >Assignee: </label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control"
+											id="assignee" placeholder="Assignee Name"/>
+									</div><br/>
+                                <label class="col-sm-2" for="assignee" >Date Assigned: </label>
+									<div class="col-sm-10">
+										<input type="date" class="form-control" id="dateAssigned"/>
+									</div><br/><br/>
+                                <label class="col-sm-2" for="comment">Comments:</label>
+									<div class="col-sm-10">
+										<textarea class="form-control" id="comment" rows="3"></textarea>
+									</div><br/><br/>
+                                <label class="col-sm-2" for="taskLoc">Task Type:</label>
                                     <div class="col-sm-10">
                                     <select multiple class="form-control" id="taskLoc">
-                                      <option selected="selected" disabled>Please select task location...</option>
-                                      <option value="done">Done</option>
-                                      <option value="current">Current</option>
-                                      <option value="backlog">Backlog</option>
-                                      <option value="icebox">Icebox</option>
-                                    </select></div>
-                                  <br></br><br></br>
-                              </div>
+                                      <option selected="selected" disabled>Please select task type...</option>
+                                      <option value="bug">Bug</option>
+                                      <option value="issue">Issue</option>
+                                      <option value="story">Story</option>
+                                    </select></div><br/><br/>
+                            </div>
                         </div>
                         <!-- Modal Footer -->
                         <div class="modal-footer">
@@ -114,20 +112,17 @@
 
     <hr />
     <div class="row">
-        <div  class="col-sm-3">
-            <h4>Done</h4>
+        <div class="col-sm-3" id="done">
             <div id="done_board" class="board"></div>
         </div>
-        <div  class="col-sm-3">
-            <h4>Current</h4>
+        <div class="col-sm-3" id="current">
             <div id="current_board" class="board"></div>
         </div>
-        <div  class="col-sm-3">
-            <h4>Backlog</h4>
-            <div id="backlog_board" class="board"></div>
+        <div  class="col-sm-3" id="backlog">
+            <div id="backlog_board" class="board">
+			</div>
         </div>
-        <div  class="col-sm-3">
-            <h4>Icebox</h4>
+        <div  class="col-sm-3" id="icebox">
             <div id="icebox_board" class="board">
                 <div th:each="record : ${records}">
                     <span th:text="${record.data}" th:id="${record.id}"></span>
@@ -141,6 +136,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.1/dragula.min.js'></script>
-<script src="js/index.js"></script>
 </body>
 </html>
