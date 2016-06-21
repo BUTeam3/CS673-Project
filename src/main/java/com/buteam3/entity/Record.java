@@ -12,8 +12,8 @@ public class Record {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotEmpty
     public long id;
+    @NotEmpty
     private String data;
     private int state;
 
