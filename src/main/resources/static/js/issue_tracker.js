@@ -1,12 +1,18 @@
-dragula([
-    document.getElementById('done_board'),
-    document.getElementById('current_board'),
-    document.getElementById('backlog_board'),
-    document.getElementById('icebox_board')
-]).on('drop', function (el) {
-    var id = $(el).data('task-id');
-    var state = $(el).closest('.board').data('state');
-    update_state(id, state);
+function drag_and_drop(){
+    dragula([
+        document.getElementById('done_board'),
+        document.getElementById('current_board'),
+        document.getElementById('backlog_board'),
+        document.getElementById('icebox_board')
+    ]).on('drop', function (el) {
+        var id = $(el).data('task-id');
+        var state = $(el).closest('.board').data('state');
+        update_state(id, state);
+    });
+}
+
+$(function(){
+    drag_and_drop();
 });
 
 $(document).on('submit', '#create_issue_form', function(){
@@ -24,7 +30,9 @@ $(document).on('submit', '#create_issue_form', function(){
         },
         success: function(data) {
             $('#issue_tracker').html(data);
+            drag_and_drop();
             $('#create_issue_modal').modal('hide');
+            $.jGrowl({ title: "Success!", message: "Task added" });
         }
     });
 
@@ -45,6 +53,8 @@ function update_state(id, state){
         },
         success: function(data) {
             $('#issue_tracker').html(data);
+            drag_and_drop();
+            $.jGrowl({ title: "Success!", message: "Task updated" });
         }
     });
 }
