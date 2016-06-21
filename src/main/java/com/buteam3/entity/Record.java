@@ -1,4 +1,4 @@
-package com.buteam3;
+package com.buteam3.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,9 +12,10 @@ public class Record {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public long id;
     @NotEmpty
+    public long id;
     private String data;
+    private int state;
 
     public String getData() {
         return data;

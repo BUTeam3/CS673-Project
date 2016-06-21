@@ -1,23 +1,17 @@
+html {
+	font-family: "Lato";
+	height: 100%;
+	-webkit-transition: -webkit-transform 0.3s ease-in-out;
+	transition: -webkit-transform 0.3s ease-in-out;
+	transition: transform 0.3s ease-in-out;
+	transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+	overflow-x: hidden;
+}
+
 body {
 	padding: 20px;
 }
 
 h2 {
 	color: #333;
-}
-
-.board {
-	border: 1px solid grey;
-	padding: 10px;
-	margin-left: 20px;
-}
-
-.board div {
-	background: #f9f9f9;
-	border: 1px solid #ddd;
-	border-radius: 5px;
-	margin: 10px;
-	padding: 10px;
-	color: #333;
-	cursor: move;
 }

@@ -1,0 +1,38 @@
+<div id="chat_menu" th:fragment="menu">
+    <h2 id="chat_count" th:text="${accounts.size+' Users'}"></h2>
+    <ul id="chat_list">
+        <li class="chat_option" th:each="account : ${accounts}">
+            <span class="chat_name" th:text="${account.givenName+' '+account.surname}"></span>
+        </li>
+    </ul>
+</div>
+
+<div class="chat_box" th:fragment="box">
+    <div class="chat_header">
+        Denzel Washington
+        <span class="close-msg">&times;</span>
+    </div>
+    <div class="chat_collapse">
+        <ul class="chat_conversation">
+            <li class="chat_msg">
+                <div class="msg_time">6/12/16 10:25 PM</div>
+                <div class="msg_name">Adam Wilner</div>
+                <div class="msg_content">Hey!</div>
+            </li>
+            <li class="chat_msg me_msg">
+                <div class="msg_time">6/12/16 10:25 PM</div>
+                <div class="msg_content">Hey!</div>
+            </li>
+            <li class="chat_msg">
+                <div class="msg_time">6/12/16 10:25 PM</div>
+                <div class="msg_name">Adam Wilner</div>
+                <div class="msg_content">Hey!</div>
+            </li>
+            <li class="chat_msg me_msg">
+                <div class="msg_time">6/12/16 10:25 PM</div>
+                <div class="msg_content">Hey!</div>
+            </li>
+        </ul>
+        <input type="text" placeholder="Enter Message" />
+    </div>
+</div>
