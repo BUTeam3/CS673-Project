@@ -48,14 +48,19 @@ You'll need to install some things first first.
 ##### Mac
 1. Install maven `brew install maven`
 2. Install postgres `brew install postgresql`
-3. Add our database to your local environemtn variables `export JDBC_DATABASE_URL='jdbc:postgresql://ec2-54-221-253-87.compute-1.amazonaws.com:5432/d5n7m5f5cvrbr5?user=oopglfyxdggazj&password=pAMFKzXf71sos-Vs-D2XBa4kDI&sslmode=require&ssl=t\
-rue&sslfactory=org.postgresql.ssl.NonValidatingFactory'`
-
+3. Create a file `~/.stormpath/apiKey.properties` with contents:
+```
+apiKey.id = VO89C6IJOW1K9DY3LD55XM3BX
+apiKey.secret = zbjgHDV6yxw/SYYmKEXksRtduufellFq2kozByC8l3U
+```
 ##### PC
 1. Install maven  [instructions](http://www.mkyong.com/maven/how-to-install-maven-in-windows/)
 2. Install postgres [download](http://www.enterprisedb.com/products-services-training/pgdownload)
-3. Add our database to your local environemtn variables	`set	JDBC_DATABASE_URL='jdbc:postgresql://ec2-54-221-253-87.compute-1.amazonaws.com:5432/d5n7m5f5cvrbr5?user=oopglfyxdggazj&password=pAMFKzXf71sos-Vs-D2XBa4kDI&sslmode=require&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory'`
-
+3. Create a file `C:\Users\YOUR_USERNAME\.stormpath\apiKey.properties` with contents:
+```
+apiKey.id = VO89C6IJOW1K9DY3LD55XM3BX
+apiKey.secret = zbjgHDV6yxw/SYYmKEXksRtduufellFq2kozByC8l3U
+```
 
 Once you have installed everything you can run:
 
