@@ -1,4 +1,4 @@
-package com.buteam3;
+package com.buteam3.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,6 +15,7 @@ public class Record {
     public long id;
     @NotEmpty
     private String data;
+    private int state;
 
     public String getData() {
         return data;
