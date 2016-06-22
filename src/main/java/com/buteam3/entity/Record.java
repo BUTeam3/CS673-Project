@@ -16,9 +16,21 @@ public class Record {
     @NotEmpty
     private String data;
     private int state;
-
+    
+    public Record(String d){
+        
+        data = d;
+        
+    }
     public String getData() {
         return data;
+    }
+    public int getState() {
+        
+        return state;
+    }
+    public void setState(int s) {
+        state = s;
     }
 
     public void setData(String data) {
