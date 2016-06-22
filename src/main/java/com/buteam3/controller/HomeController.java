@@ -59,7 +59,6 @@ public class HomeController {
         issue_tracker(model);
         return "fragments/issue_tracker";
     }
-
     @RequestMapping(value="/task/update", method = RequestMethod.POST)
     public String updateData(ModelMap model,
                              @Valid Record record,
@@ -69,5 +68,12 @@ public class HomeController {
         }
         issue_tracker(model);
         return "fragments/issue_tracker";
+    }
+    @RequestMapping(value="/task/delete", method =RequestMethod.DELETE)
+    public void deleteTask(ModelMap model,
+                          @Valid Record record,
+                          BindingResult result){
+        
+        repository.delete(record);
     }
 }
