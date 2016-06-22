@@ -1,5 +1,5 @@
 <div id="issue_tracker" class="row" th:fragment="boards">
-    <div  class="col-sm-3">
+    <div class="col-sm-3">
         <h4>Done</h4>
         <div id="done_board" class="board" data-state="3">
             <div class="task" th:each="record : ${done}" th:id="${'task_'+record.id}" th:attr="data-task-id=${record.id}">
@@ -7,7 +7,7 @@
             </div>
         </div>
     </div>
-    <div  class="col-sm-3">
+    <div class="col-sm-3">
         <h4>Current</h4>
         <div id="current_board" class="board" data-state="2">
             <div class="task" th:each="record : ${current}" th:id="${'task_'+record.id}" th:attr="data-task-id=${record.id}">
@@ -15,7 +15,7 @@
             </div>
         </div>
     </div>
-    <div  class="col-sm-3">
+    <div class="col-sm-3">
         <h4>Backlog</h4>
         <div id="backlog_board" class="board" data-state="1">
             <div class="task" th:each="record : ${backlog}" th:id="${'task_'+record.id}" th:attr="data-task-id=${record.id}">
@@ -23,7 +23,7 @@
             </div>
         </div>
     </div>
-    <div  class="col-sm-3">
+    <div class="col-sm-3">
         <h4>Icebox</h4>
         <div id="icebox_board" class="board" data-state="0">
             <div class="task" th:each="record : ${icebox}" th:id="${'task_'+record.id}" th:attr="data-task-id=${record.id}">
