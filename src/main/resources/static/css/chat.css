@@ -175,7 +175,7 @@
 .chat_box input {
     box-sizing: border-box;
     width: 100%;
-    padding: 20px;
+    padding: 5px;
     border: 0;
     border-top: 1px solid #ccc;
 }
@@ -184,4 +184,10 @@
     float: right;
     font-size: 20px;
     margin-top: -4px;
+}
+
+
+
+#message{
+	width:initial;
 }

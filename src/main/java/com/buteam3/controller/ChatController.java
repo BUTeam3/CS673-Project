@@ -28,29 +28,13 @@ public class ChatController {
     public ChatController(MessageRepository repository) {
         this.repository = repository;
     }
-	@RequestMapping(value="/", method = RequestMethod.GET)
-	public String home(ModelMap model, HttpServletRequest req) {
-        chat(model);
-        return "home";
-    }
-	
     private void chat(ModelMap model) {
-        List<Message> message = repository.findByMessage(0);
-        model.addAttribute("message", message);
+        List<Message> message = repository.findByChannel(0);
+        model.addAttribute("chatbox", message);
     }
 
     @RequestMapping(value="/chat_msg/new", method = RequestMethod.POST)
     public String insertData(ModelMap model,
-                             @Valid Message message,
-                             BindingResult result) {
-        if (!result.hasErrors()) {
-            repository.save(message);
-        }
-        chat(model);
-        return "fragments/chat";
-    }
-    @RequestMapping(value="/chat_msg/update", method = RequestMethod.POST)
-    public String updateData(ModelMap model,
                              @Valid Message message,
                              BindingResult result) {
         if (!result.hasErrors()) {

@@ -13,22 +13,20 @@
         <span class="close-msg">&times;</span>
     </div>
     <div class="chat_collapse">
-        <ul class="chat_conversation">
-		<li class="chat_msg" th:each="message : ${message}">
-                <div class="msg_time">6/12/16 10:25 PM</div>
+	    <ul id="chat_conversation" data-state="0">
+            <li class="chat_msg" th:each="message : ${chatbox}">
+                <!--<div class="msg_time">6/12/16 10:25 PM</div>-->
                 <div class="msg_content" th:text="${message.message}"></div>
-		</li>
-        </ul>
+            </li>
+        </ul>		
          <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <form id="create_messge_form" method="POST">
                     <div class="modal-body">
                         <div class="form-group">
-                            <input id="message" type="text" class="form-control" placeholder="Enter Message"/>
+							<input id="message" type="text" class="form-control" placeholder="Enter Message"/>
+							<button type="submit" class="btn btn-primary">Submit</button>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
             </div>

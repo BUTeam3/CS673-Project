@@ -17,11 +17,11 @@ $(document).on('submit', '#create_messge_form', function(){
         beforeSend: function(xhr){
             xhr.setRequestHeader('X-CSRF-Token', $('meta[name="_csrf"]').attr('content'))
         },
-        message: {
-            message: $('#message').val()
+        data: {
+            data: $('#message').val()
         },
-        success: function(message) {
-            $('.chat_box').html(message);
+        success: function(data) {
+            $('.chat_box').html(data);
             $.jGrowl({ title: "Success!", message: "Message added" });
         }
     });

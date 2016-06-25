@@ -15,10 +15,8 @@ public class Message {
     public long mid;
     @NotEmpty
     private String message;
+    private int channel;
 	private String username;
-	private int channel_id;
-	private String timestamp;
-	
 
     public String getData() {
         return message;
