@@ -28,19 +28,15 @@ public class ChatController {
     public ChatController(MessageRepository repository) {
         this.repository = repository;
     }
-
-    @RequestMapping(value="/", method = RequestMethod.GET)
-    public String home(ModelMap model, HttpServletRequest req) {
-        Application application = ApplicationResolver.INSTANCE.getApplication(req);
-        AccountList accounts = application.getAccounts();
-        model.addAttribute("accounts", accounts);
+	@RequestMapping(value="/", method = RequestMethod.GET)
+	public String home(ModelMap model, HttpServletRequest req) {
         chat(model);
         return "home";
     }
-
+	
     private void chat(ModelMap model) {
-        List<Message> messages = repository.findByMessage();
-        model.addAttribute("messages", messages);
+        List<Message> message = repository.findByMessage(0);
+        model.addAttribute("message", message);
     }
 
     @RequestMapping(value="/chat_msg/new", method = RequestMethod.POST)

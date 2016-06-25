@@ -14,39 +14,17 @@
     </div>
     <div class="chat_collapse">
         <ul class="chat_conversation">
-		<li class="chat_msg" th:each="message : ${messages}">
+		<li class="chat_msg" th:each="message : ${message}">
                 <div class="msg_time">6/12/16 10:25 PM</div>
-                <div class="msg_content" th:text="${message.data}"></div>
+                <div class="msg_content" th:text="${message.message}"></div>
 		</li>
-		<!--
-            <li class="chat_msg">
-                <div class="msg_time">6/12/16 10:25 PM</div>
-                <div class="msg_name">Adam Wilner</div>
-                <div class="msg_content">Hey!</div>
-            </li>
-            <li class="chat_msg me_msg">
-                <div class="msg_time">6/12/16 10:25 PM</div>
-                <div class="msg_content">Hey!</div>
-            </li>
-            <li class="chat_msg">
-                <div class="msg_time">6/12/16 10:25 PM</div>
-                <div class="msg_name">Adam Wilner</div>
-                <div class="msg_content">Hey!</div>
-            </li>
-            <li class="chat_msg me_msg">
-                <div class="msg_time">6/12/16 10:25 PM</div>
-                <div class="msg_content">Hey!</div>
-            </li>
-			-->
         </ul>
-		  <div class="modal-dialog" role="document">
+         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form id="create_issue_form" method="POST">
-                    <div class="modal-header">
-                    </div>
+                <form id="create_messge_form" method="POST">
                     <div class="modal-body">
                         <div class="form-group">
-                            <input id="data" type="text" class="form-control" placeholder="Issue"/>
+                            <input id="message" type="text" class="form-control" placeholder="Enter Message"/>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -55,6 +33,5 @@
                 </form>
             </div>
         </div>
-        <input type="text" placeholder="Enter Message" />
     </div>
 </div>

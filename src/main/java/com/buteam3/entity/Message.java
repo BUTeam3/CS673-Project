@@ -12,18 +12,20 @@ public class Message {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public long id;
+    public long mid;
     @NotEmpty
-    private String data;
-	private String user;
-	private String timeStamp;
+    private String message;
+	private String username;
+	private int channel_id;
+	private String timestamp;
+	
 
     public String getData() {
-        return data;
+        return message;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setData(String message) {
+        this.message = message;
     }
 
 }

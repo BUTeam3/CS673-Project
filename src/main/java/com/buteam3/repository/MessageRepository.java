@@ -8,5 +8,5 @@ import com.buteam3.entity.Message;
 
 @Repository
 public interface MessageRepository extends JpaRepository<Message, Long> {
-	List<Message> findByMessage();
+	List<Message> findByMessage(int channel_id);
 }
