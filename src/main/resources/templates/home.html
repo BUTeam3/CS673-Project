@@ -54,25 +54,22 @@
                             <form name="newTask" class="form-horizontal" role="form" th:object="${insertRecord}" method="POST">
 							<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                             <div class="form-group">
-
                                 <label class="col-sm-2" for="taskName" >Name: </label>
-									<div class="col-sm-10">
-										<input type="text" class="form-control"
-											id="taskName" placeholder="Task Name"/>
-									</div><br/>
+					<div class="col-sm-10">
+						<input type="text" class="form-control"	id="taskName" placeholder="Task Name"/>
+					</div><br/>
                                 <label class="col-sm-2" for="assignee" >Assignee: </label>
-									<div class="col-sm-10">
-										<input type="text" class="form-control"
-											id="assignee" placeholder="Assignee Name"/>
-									</div><br/>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="assignee" placeholder="Assignee Name"/>
+					</div><br/>
                                 <label class="col-sm-2" for="assignee" >Date Assigned: </label>
-									<div class="col-sm-10">
-										<input type="date" class="form-control" id="dateAssigned"/>
-									</div><br/><br/>
+					<div class="col-sm-10">
+						<input type="date" class="form-control" id="dateAssigned"/>
+					</div><br/><br/>
                                 <label class="col-sm-2" for="comment">Comments:</label>
-									<div class="col-sm-10">
-										<textarea class="form-control" id="comment" rows="3"></textarea>
-									</div><br/><br/>
+					<div class="col-sm-10">
+						<textarea class="form-control" id="comment" rows="3"></textarea>
+					</div><br/><br/>
                                 <label class="col-sm-2" for="taskLoc">Task Type:</label>
                                     <div class="col-sm-10">
                                     <select multiple class="form-control" id="taskLoc">
