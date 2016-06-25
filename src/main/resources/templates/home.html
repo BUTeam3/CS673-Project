@@ -51,10 +51,38 @@
                         <h4 class="modal-title">Create a new task</h4>
                     </div>
                     <div class="modal-body">
-                        <div class="form-group">
-                            <input id="data" type="text" class="form-control" placeholder="Issue"/>
+                            <form name="newTask" class="form-horizontal" role="form" th:object="${insertRecord}" method="POST">
+							<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                            <div class="form-group">
+
+                                <label class="col-sm-2" for="taskName" >Name: </label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control"
+											id="taskName" placeholder="Task Name"/>
+									</div><br/>
+                                <label class="col-sm-2" for="assignee" >Assignee: </label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control"
+											id="assignee" placeholder="Assignee Name"/>
+									</div><br/>
+                                <label class="col-sm-2" for="assignee" >Date Assigned: </label>
+									<div class="col-sm-10">
+										<input type="date" class="form-control" id="dateAssigned"/>
+									</div><br/><br/>
+                                <label class="col-sm-2" for="comment">Comments:</label>
+									<div class="col-sm-10">
+										<textarea class="form-control" id="comment" rows="3"></textarea>
+									</div><br/><br/>
+                                <label class="col-sm-2" for="taskLoc">Task Type:</label>
+                                    <div class="col-sm-10">
+                                    <select multiple class="form-control" id="taskLoc">
+                                      <option selected="selected" disabled>Please select task type...</option>
+                                      <option value="bug">Bug</option>
+                                      <option value="issue">Issue</option>
+                                      <option value="story">Story</option>
+                                    </select></div><br/><br/>
+                            </div>
                         </div>
-                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Submit</button>
