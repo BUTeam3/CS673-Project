@@ -1,5 +1,5 @@
 <div id="chat_menu" th:fragment="menu">
-    <h2 id="chat_count" th:text="${accounts.size+' Users'}"></h2>
+ <!--   <h2 id="chat_count" th:text="${accounts.size+' Users'}"></h2>-->
     <ul id="chat_list">
         <li class="chat_option" th:each="account : ${accounts}">
             <span class="chat_name" th:text="${account.givenName+' '+account.surname}"></span>
@@ -14,19 +14,17 @@
     </div>
     <div class="chat_collapse">
 	    <ul id="chat_conversation" data-state="0">
-            <li class="chat_msg" th:each="message : ${chatbox}">
+            <li class="chat_msg" th:each="message : ${chatbox}"  th:id="${'message_'+message.mid}" th:attr="message-id=${message.mid}">
                 <!--<div class="msg_time">6/12/16 10:25 PM</div>-->
-                <div class="msg_content" th:text="${message.message}"></div>
+                <div class="msg_content" th:text="${message.data}"></div>
             </li>
         </ul>		
-         <div class="modal-dialog" role="document">
+         <div role="document">
             <div class="modal-content">
                 <form id="create_messge_form" method="POST">
                     <div class="modal-body">
-                        <div class="form-group">
-							<input id="message" type="text" class="form-control" placeholder="Enter Message"/>
-							<button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
+						<input id="message" type="text" class="form-control" placeholder="Enter Message"/>
+						<!--<button type="submit" class="btn btn-primary">Submit</button>-->
                     </div>
                 </form>
             </div>

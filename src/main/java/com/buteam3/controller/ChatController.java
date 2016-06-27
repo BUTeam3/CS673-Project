@@ -27,8 +27,16 @@ public class ChatController {
     @Autowired
     public ChatController(MessageRepository repository) {
         this.repository = repository;
+    }	
+	
+	public String chat(ModelMap model, HttpServletRequest req) {
+		Application application = ApplicationResolver.INSTANCE.getApplication(req);
+        AccountList accounts = application.getAccounts();
+        model.addAttribute("accounts", accounts);
+        chatmsg(model);
+        return "chat";
     }
-    private void chat(ModelMap model) {
+    private void chatmsg(ModelMap model) {
         List<Message> message = repository.findByChannel(0);
         model.addAttribute("chatbox", message);
     }
@@ -40,7 +48,7 @@ public class ChatController {
         if (!result.hasErrors()) {
             repository.save(message);
         }
-        chat(model);
+        chatmsg(model);
         return "fragments/chat";
     }
 }

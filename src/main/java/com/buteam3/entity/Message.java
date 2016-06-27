@@ -14,16 +14,16 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long mid;
     @NotEmpty
-    private String message;
+    private String data;
     private int channel;
 	private String username;
 
     public String getData() {
-        return message;
+        return data;
     }
 
-    public void setData(String message) {
-        this.message = message;
+    public void setData(String data) {
+        this.data = data;
     }
 
 }

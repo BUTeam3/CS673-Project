@@ -18,6 +18,8 @@ $(document).on('submit', '#create_messge_form', function(){
             xhr.setRequestHeader('X-CSRF-Token', $('meta[name="_csrf"]').attr('content'))
         },
         data: {
+			channel: '0',
+			username: 'Jerry',
             data: $('#message').val()
         },
         success: function(data) {
