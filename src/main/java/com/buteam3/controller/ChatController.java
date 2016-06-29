@@ -28,7 +28,6 @@ public class ChatController {
     public ChatController(MessageRepository repository) {
         this.repository = repository;
     }	
-	
 	public String chat(ModelMap model, HttpServletRequest req) {
 		Application application = ApplicationResolver.INSTANCE.getApplication(req);
         AccountList accounts = application.getAccounts();

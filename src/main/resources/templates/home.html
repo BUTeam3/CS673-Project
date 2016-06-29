@@ -66,9 +66,9 @@
 
     <hr/>
     <div th:replace="fragments/issue_tracker :: boards">&nbsp;</div>
-    <div th:replace="fragments/chat :: menu">&nbsp;</div>
+    <div th:replace="fragments/chat_menu :: menu">&nbsp;</div>
     <div th:replace="fragments/chat :: box">&nbsp;</div>
-    <button type="button" id="chat_button">Chat (45)</button>
+    <button type="button" id="chat_button" th:text="${'Chat (' + accounts.size + ')'}"></button>
 
 </div>
 

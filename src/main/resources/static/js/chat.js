@@ -8,8 +8,16 @@ $(document).on('click', '.chat_header, .chat_option', function() {
     $('.chat_box').toggleClass('active');
 });
 $(document).on('submit', '#create_messge_form', function(){
+	
+	var user = $('#message').data('user');
+	var dt = new Date();
+	var AMPM;
+	var time =(dt.getMonth()+1)+"/"+dt.getDate()+"/"+dt.getFullYear()+" "+dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+	if (dt.getHours()<12)
+		AMPM="AM";
+	else
+		AMPM="PM";
     $theForm = $(this);
-
     // send xhr request
     $.ajax({
         type: "post",
@@ -19,15 +27,18 @@ $(document).on('submit', '#create_messge_form', function(){
         },
         data: {
 			channel: '0',
-			username: 'Jerry',
+			timestamp: time+AMPM,
+			username: user,
             data: $('#message').val()
         },
         success: function(data) {
-            $('.chat_box').html(data);
-            $.jGrowl({ title: "Success!", message: "Message added" });
+            $('.chat_box').replaceWith(data);
+			$('.chat_box').toggleClass('active');
+			$('#chat_conversation').scrollTop($('#chat_conversation')[0].scrollHeight);
         }
     });
-
+	
+	
     // prevent submitting again
     return false;
 });

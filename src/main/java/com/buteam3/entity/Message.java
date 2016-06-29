@@ -16,14 +16,26 @@ public class Message {
     @NotEmpty
     private String data;
     private int channel;
+	private String timestamp;
 	private String username;
 
     public String getData() {
         return data;
     }
-
     public void setData(String data) {
         this.data = data;
+    }
+    public String getTimestamp() {
+        return timestamp;
+    }
+    public void setTimestamp(String Timestamp) {
+        this.timestamp = Timestamp;
+    }
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String Username) {
+        this.username = Username;
     }
 
 }

@@ -144,6 +144,11 @@
     clear: both;
 }
 
+.chat_msg .msg_name.me_msg{
+    color: #343436;
+    float: right !important;
+}
+
 .chat_msg .msg_name{
     color: #343436;
     float: left !important;
@@ -160,12 +165,12 @@
     background: #53DD6C;
     color: #fff;
     display: table;
-    padding: 10px 20px;
+    padding: 5px;
     border-radius: 100px;
     float: left;
 }
 
-.me_msg .msg_content{
+.chat_msg .msg_content.me_msg{
     clear: both;
     float: right !important;
     background: #0ebeff !important;
