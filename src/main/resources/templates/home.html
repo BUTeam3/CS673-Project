@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Spring Boot Heroku Example</title>
+    <title>Bit Tracker</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -82,9 +82,9 @@
 
     <hr/>
     <div th:replace="fragments/issue_tracker :: boards">&nbsp;</div>
-    <div th:replace="fragments/chat :: menu">&nbsp;</div>
+    <div th:replace="fragments/chat_menu :: menu">&nbsp;</div>
     <div th:replace="fragments/chat :: box">&nbsp;</div>
-    <button type="button" id="chat_button">Chat (45)</button>
+    <button type="button" id="chat_button" th:text="${'Chat (' + accounts.size + ')'}"></button>
 
 </div>
 
