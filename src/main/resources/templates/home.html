@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Bit Tracker</title>
+    <title>Spring Boot Heroku Example</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.1/dragula.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-jgrowl/1.4.5/jquery.jgrowl.min.css" />
     <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css' />
-    <link rel="stylesheet" href="css/index.css" />
-    <link rel="stylesheet" href="css/issue_tracker.css" />
-    <link rel="stylesheet" href="css/chat.css" />
+    <link rel="stylesheet" href="../static/css/index.css" />
+    <link rel="stylesheet" href="../static/css/issue_tracker.css" />
+    <link rel="stylesheet" href="../static/css/chat.css" />
 </head>
 <body>
 <div class="container">
@@ -52,25 +52,27 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <input id="data" type="text" class="form-control" placeholder="Issue"/>
-                            <label class="col-sm-2" for="taskName" >Name: </label>
-        					<div class="col-sm-10">
-        						<input type="text" class="form-control"	id="taskName" placeholder="Task Name"/>
-        					</div><br/>
-                            <label class="col-sm-2" for="assignee" >Assignee: </label>
-        					<div class="col-sm-10">
-        						<input type="text" class="form-control" id="assignee" placeholder="Assignee Name"/>
-        					</div><br/>
-                            <label class="col-sm-2" for="assignee" >Date Assigned: </label>
-        					<div class="col-sm-10">
-        						<input type="date" class="form-control" id="dateAssigned"/>
-        					</div><br/><br/>
-                            <label class="col-sm-2" for="comment">Comments:</label>
-        					<div class="col-sm-10">
-        						<textarea class="form-control" id="comment" rows="3"></textarea>
-        					</div><br/><br/>
-                        </div>
-                    </div>
+                            <input id="data" type="text" class="form-control" placeholder="Issue"/><br/><br/>
+
+                                <label class="col-sm-2" for="taskName" >Name: </label>
+                            <div class="col-sm-10">
+                            <input type="text" class="form-control"
+                            id="taskName" placeholder="Task Name"/>
+                            </div><br/>
+                                <label class="col-sm-2" for="assignee" >Assignee: </label>
+                            <div class="col-sm-10">
+                            <input type="text" class="form-control"
+                            id="assignee" placeholder="Assignee Name"/>
+                            </div><br/>
+                                <label class="col-sm-2" for="assignee" >Date Assigned: </label>
+                            <div class="col-sm-10">
+                            <input type="date" class="form-control" id="dateAssigned"/>
+                            </div><br/><br/>
+                                <label class="col-sm-2" for="comment">Comments:</label>
+                            <div class="col-sm-10">
+                            <textarea class="form-control" id="comment" rows="3"></textarea>
+                            </div><br/><br/>
+                    </div></div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -82,9 +84,9 @@
 
     <hr/>
     <div th:replace="fragments/issue_tracker :: boards">&nbsp;</div>
-    <div th:replace="fragments/chat_menu :: menu">&nbsp;</div>
+    <div th:replace="fragments/chat :: menu">&nbsp;</div>
     <div th:replace="fragments/chat :: box">&nbsp;</div>
-    <button type="button" id="chat_button" th:text="${'Chat (' + accounts.size + ')'}"></button>
+    <button type="button" id="chat_button">Chat (45)</button>
 
 </div>
 
@@ -93,7 +95,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-jgrowl/1.4.5/jquery.jgrowl.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.1/dragula.min.js"></script>
-<script src="js/issue_tracker.js"></script>
-<script src="js/chat.js"></script>
+<script src="../static/js/issue_tracker.js"></script>
+<script src="../static/js/chat.js"></script>
 </body>
 </html>
