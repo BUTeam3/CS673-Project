@@ -1,3 +1,6 @@
+#newTask input, textarea, label{
+	margin-top: 10px;
+}
 
 .board {
 	border: 1px solid grey;
@@ -17,48 +20,9 @@
 	cursor: move;
 }
 
-
-
-.col-sm-3 {
-	background-size:100% auto;
-	background-position: top center;
-	background-repeat:no-repeat;
-	height:475px;
-	display:block;
-
-}
-
-#done {
-	background-image:url("../../done.png");
-}
-
-#current {
-	background-image:url("../../current.png");
-}
-
-#backlog {
-	background-image:url("../../backlog.png");
-}
-
-#icebox {
-	background-image:url("../../icebox.png");
-}
-
-#columns .col-md-12{
-	padding:20px;
-	}
-
-#columns tbody{
-	display:block;
-	height:410px;
-	overflow-y:auto;
-}
-#columns td{
-	width: 225px;
-}
-
 .modal-body .form-horizontal .control-label {
     text-align: left;
+    overflow-y: hidden;
 }
 .modal-body .form-horizontal .col-sm-offset-2 {
     margin-left: 15px;
