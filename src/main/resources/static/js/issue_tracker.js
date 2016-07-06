@@ -14,8 +14,17 @@ function drag_and_drop(){
 $(function(){
     drag_and_drop();
 });
-
+$(document).on('click', '.task_difficulty input:checked', function(){
+	update_difficulty($(this).val(),$(this).parent().parent().data('task-id'),1);
+});
 $(document).on('submit', '#create_issue_form', function(){
+    var dt = new Date();
+	var AMPM;
+	var time =(dt.getMonth()+1)+"/"+dt.getDate()+"/"+dt.getFullYear()+" "+dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+	if (dt.getHours()<12)
+		AMPM="AM";
+	else
+		AMPM="PM";
     $theForm = $(this);
 
     // send xhr request
@@ -26,6 +35,7 @@ $(document).on('submit', '#create_issue_form', function(){
             xhr.setRequestHeader('X-CSRF-Token', $('meta[name="_csrf"]').attr('content'))
         },
         data: {
+			timestamp: time+AMPM,
             data: $('#data').val()
         },
         success: function(data) {
@@ -49,14 +59,32 @@ function update_state(id, state){
         },
         data: {
             id: id,
-            state: state
+            state: '3'
         },
         success: function(data) {
             $('#issue_tracker').html(data);
-            drag_and_drop();
             $.jGrowl({ title: "Success!", message: "Task updated" });
         }
     });
+}
+
+function update_difficulty(difficulty,id,state){
+    $.ajax({
+        type: "post",
+        url: "/task/update",
+        beforeSend: function(xhr){
+            xhr.setRequestHeader('X-CSRF-Token', $('meta[name="_csrf"]').attr('content'))
+        },
+        data: {
+            difficulty: difficulty
+        },
+        success: function(data) {
+            $('#issue_tracker').html(data);
+			update_state(id,state);
+            $.jGrowl({ title: "Success!", message: "Task updated" });
+        }
+    });
+	alert(id+' '+state);
 }
 
 function set_csrf(xhr){

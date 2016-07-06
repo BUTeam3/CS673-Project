@@ -13,3 +13,17 @@
     color: #333;
     cursor: move;
 }
+.task_created{
+	color:#ccc;
+	font-size:12px;
+	padding-top:8px;
+}
+.task_difficulty {
+	border:1px solid black;
+}
+.task_difficulty p{
+	text-align:center;
+}
+.task_difficulty input{
+	width:24px;
+}

@@ -15,14 +15,27 @@ public class Record {
     public long id;
     @NotEmpty
     private String data;
+	private String timestamp;
+	private String difficulty;
     private int state;
 
     public String getData() {
         return data;
     }
-
     public void setData(String data) {
         this.data = data;
+    }
+    public String getTimestamp() {
+        return timestamp;
+    }
+    public void setTimestamp(String Timestamp) {
+        this.timestamp = Timestamp;
+    }
+    public String getDifficulty() {
+        return difficulty;
+    }
+    public void setDifficulty(String Difficulty) {
+        this.difficulty = Difficulty;
     }
 
 }
