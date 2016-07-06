@@ -1,0 +1,8 @@
+<div id="chat_menu" th:fragment="menu">
+   <h2 id="chat_count" th:text="${accounts.size + ' Users'}"></h2>
+    <ul id="chat_list">
+        <li class="chat_option" th:each="account : ${accounts}">
+            <span class="chat_name" th:text="${account.givenName+' '+account.surname}"></span>
+        </li>
+    </ul>
+</div>

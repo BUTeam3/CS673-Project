@@ -36,7 +36,7 @@ public class ChatController {
         return "chat";
     }
     private void chatmsg(ModelMap model) {
-        List<Message> message = repository.findByChannelId(0);
+        List<Message> message = repository.findBychannelid(0);
         model.addAttribute("chatbox", message);
     }
 
