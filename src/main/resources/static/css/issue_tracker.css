@@ -2,6 +2,18 @@
 	margin-top: 10px;
 }
 
+.modal-body {
+	height: auto;
+	overflow-y: hidden;
+}
+
+.modal-body .form-horizontal .control-label {
+    text-align: left;
+}
+.modal-body .form-horizontal .col-sm-offset-2 {
+    margin-left: 15px;
+}
+
 .board {
 	border: 1px solid grey;
 	padding: 10px;
@@ -18,12 +30,4 @@
 	padding: 10px;
 	color: #333;
 	cursor: move;
-}
-
-.modal-body .form-horizontal .control-label {
-    text-align: left;
-    overflow-y: hidden;
-}
-.modal-body .form-horizontal .col-sm-offset-2 {
-    margin-left: 15px;
 }
