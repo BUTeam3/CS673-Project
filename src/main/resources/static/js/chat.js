@@ -35,6 +35,7 @@ $(document).on('submit', '#create_messge_form', function(){
 
 
 setInterval(function() {
+    var scroll_top = $('#chat_conversation').scrollTop();
     $.ajax({
         type: "get",
         url: "/chat_msg/read",
@@ -43,7 +44,11 @@ setInterval(function() {
         },
         success: function (data) {
             $('#chat_conversation').replaceWith(data);
-            $('#chat_conversation').scrollTop($('#chat_conversation')[0].scrollHeight);
+            if($('#chat_conversation').scrollTop()==$('#chat_conversation')[0].scrollHeight){
+                $('#chat_conversation').scrollTop($('#chat_conversation')[0].scrollHeight);
+            }else{
+                $('#chat_conversation').scrollTop(scroll_top);
+            }
         }
     });
 }, 1000);
