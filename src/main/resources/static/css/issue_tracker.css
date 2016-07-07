@@ -1,7 +1,25 @@
+#newTask input, textarea, label{
+	margin-top: 10px;
+}
+
+.modal-body {
+	height: auto;
+	overflow-y: hidden;
+}
+
+.modal-body .form-horizontal .control-label {
+    text-align: left;
+}
+.modal-body .form-horizontal .col-sm-offset-2 {
+    margin-left: 15px;
+}
+
 .board {
-    border: 1px solid grey;
-    padding: 10px;
-    margin-left: 20px;
+	border: 1px solid grey;
+	padding: 10px;
+	margin-top:47px;
+	overflow-y:auto;
+	height:400px;
 }
 
 .board .task {
