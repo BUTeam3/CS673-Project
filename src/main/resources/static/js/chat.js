@@ -9,7 +9,7 @@ $(document).on('click', '.chat_header, .chat_option', function() {
 });
 $(document).on('submit', '#create_messge_form', function(){
 	
-	var user = $('#message').data('user');
+	var user = $('.navbar-text').text().split(' ')[1];
     $theForm = $(this);
     // send xhr request
     $.ajax({
