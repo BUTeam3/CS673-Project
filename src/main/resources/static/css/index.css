@@ -1,4 +1,47 @@
-<<<<<<< HEAD
+html {
+	font-family: "Lato";
+	height: 100%;
+	-webkit-transition: -webkit-transform 0.3s ease-in-out;
+	transition: -webkit-transform 0.3s ease-in-out;
+	transition: transform 0.3s ease-in-out;
+	transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+	overflow-x: hidden;
+}
+
+body {
+	background-image:url("../images/background.jpg");
+	background-repeat: no-repeat;
+	background-attachment:fixed;
+	background-size: 100% 100%;
+	background-position:center bottom;
+	padding: 20px;
+}
+
+.navbar-brand {
+	text-transform:uppercase;
+	font-family: 'Orbitron', sans-serif;
+	font-color:black;
+	font-size: 6em;
+}
+
+.container-fluid {
+	margin-right:15px;
+}
+
+.btn {
+	background-color:black;
+	font-family:consolas;
+	text-transform:uppercase;
+}
+
+h2 {
+	color: #333;
+}
+
+#login {
+	margin-top:.5em;
+}
+
 html {
 	font-family: "Lato";
 	height: 100%;
@@ -42,48 +85,4 @@ h2 {
 #login {
 	margin-top:.5em;
 }
-=======
-html {
-	font-family: "Lato";
-	height: 100%;
-	-webkit-transition: -webkit-transform 0.3s ease-in-out;
-	transition: -webkit-transform 0.3s ease-in-out;
-	transition: transform 0.3s ease-in-out;
-	transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
-	overflow-x: hidden;
-}
 
-body {
-	background-image:url("../images/background.jpg");
-	background-repeat: no-repeat;
-	background-attachment:fixed;
-	background-size: 100% 100%;
-	background-position:center bottom;
-	padding: 20px;
-}
-
-.navbar-brand {
-	text-transform:uppercase;
-	font-family:"GULIMCHE";
-	font-color:black;
-	font-size: 6em;
-}
-
-.container-fluid {
-	margin-right:15px;
-}
-
-.btn {
-	background-color:black;
-	font-family:consolas;
-	text-transform:uppercase;
-}
-
-h2 {
-	color: #333;
-}
-
-#login {
-	margin-top:.5em;
-}
->>>>>>> 11695efe3c4b8ae11931377ba84672f3ee9458fd
