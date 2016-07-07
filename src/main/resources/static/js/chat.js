@@ -44,10 +44,10 @@ setInterval(function() {
         },
         success: function (data) {
             $('#chat_conversation').replaceWith(data);
-            if($('#chat_conversation').scrollTop()==$('#chat_conversation')[0].scrollHeight){
-                $('#chat_conversation').scrollTop($('#chat_conversation')[0].scrollHeight);
-            }else{
-                $('#chat_conversation').scrollTop(scroll_top);
+            var out = $('#chat_conversation');
+            var isScrolledToBottom = out.scrollHeight - out.clientHeight <= out.scrollTop + 1;
+            if(isScrolledToBottom){
+                out.scrollTop = out.scrollHeight - out.clientHeight;
             }
         }
     });
