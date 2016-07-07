@@ -66,9 +66,28 @@
 
     <hr/>
     <div th:replace="fragments/issue_tracker :: boards">&nbsp;</div>
-    <div th:replace="fragments/chat_menu :: menu">&nbsp;</div>
-    <div th:replace="fragments/chat :: box">&nbsp;</div>
-    <button type="button" id="chat_button" th:text="${'Chat (' + accounts.size + ')'}"></button>
+
+    <div class="chat_box">
+        <div class="chat_header">
+            Test User
+            <!--<span class="close-msg">&times;</span>-->
+        </div>
+        <div class="chat_collapse">
+            <ul id="chat_conversation" th:replace="fragments/chat :: conversation"></ul>
+            <div role="document">
+                <div class="modal-content">
+                    <form id="create_messge_form" method="POST">
+                        <div class="modal-body">
+                            <input id="message" type="text" class="form-control" th:attr="data-user=${account.givenName}" placeholder="Enter Message"/>
+                            <!--<button type="submit" class="btn btn-primary">Submit</button>-->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div th:replace="fragments/chat_menu :: menu">&nbsp;</div>-->
+    <!--<button type="button" id="chat_button" th:text="${'Chat (' + accounts.size + ')'}"></button>-->
 
 </div>
 

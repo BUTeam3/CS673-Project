@@ -13,7 +13,7 @@
         <div id="current_board" class="board" data-state="2">
             <div class="task" th:each="record : ${current}" th:id="${'task_'+record.id}" th:attr="data-task-id=${record.id}">
                 <div class="task_name" th:text="${record.data}"></div>
-         <!--       <div class="task_created" th:text="${record.timestamp}"></div>-->
+                <!--<div class="task_created" th:text="${record.timestamp}"></div>-->
 		<!--		<input type="button" class="task_done" value="Done">
 				<div class="AcceptReject">
 					<input type="button" class="task_accept" value="Accept">
@@ -27,7 +27,7 @@
         <div id="backlog_board" class="board" data-state="1">
             <div class="task" th:each="record : ${backlog}" th:id="${'task_'+record.id}" th:attr="data-task-id=${record.id}">
                 <div class="task_name" th:text="${record.data}"></div>
- <!--               <div class="task_created" th:text="${record.timestamp}"></div>-->
+                <!--<div class="task_created" th:text="${record.timestamp}"></div>-->
 				<!--<input type="button" class="task_start" value="Start">-->
             </div>
         </div>
@@ -37,16 +37,15 @@
         <div id="icebox_board" class="board" data-state="0">
             <div class="task" th:each="record : ${icebox}" th:id="${'task_'+record.id}" th:attr="data-task-id=${record.id}">
                 <div class="task_name" th:text="${record.data}"></div>
-       <!--         <div class="task_created" th:text="${record.timestamp}"></div>-->
-<!--				<div class="task_difficulty">
-					<p>Difficulty</p>
-					<input type="radio" th:name="${'difficult_'+record.id}" value="1">1</input>
-					<input type="radio" th:name="${'difficult_'+record.id}" value="2">2</input>
-					<input type="radio" th:name="${'difficult_'+record.id}" value="3">3</input>
-					<input type="radio" th:name="${'difficult_'+record.id}" value="4">4</input>
-					<input type="radio" th:name="${'difficult_'+record.id}" value="5">5</input>
-				</div>
-				-->
+                <!--<div class="task_created" th:text="${record.timestamp}"></div>-->
+				<!--<div class="task_difficulty">-->
+					<!--<p>Difficulty</p>-->
+					<!--<input type="radio" th:name="${'difficult_'+record.id}" value="1">1</input>-->
+					<!--<input type="radio" th:name="${'difficult_'+record.id}" value="2">2</input>-->
+					<!--<input type="radio" th:name="${'difficult_'+record.id}" value="3">3</input>-->
+					<!--<input type="radio" th:name="${'difficult_'+record.id}" value="4">4</input>-->
+					<!--<input type="radio" th:name="${'difficult_'+record.id}" value="5">5</input>-->
+				<!--</div>-->
             </div>
         </div>
     </div>

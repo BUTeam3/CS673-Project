@@ -23,10 +23,8 @@ $(document).on('submit', '#create_messge_form', function(){
 			username: user,
             data: $('#message').val()
         },
-        success: function(data) {
-            $('.chat_box').replaceWith(data);
-			$('.chat_box').toggleClass('active');
-			$('#chat_conversation').scrollTop($('#chat_conversation')[0].scrollHeight);
+        success: function (data) {
+            $('#create_messge_form input').val('');
         }
     });
 	
@@ -35,6 +33,17 @@ $(document).on('submit', '#create_messge_form', function(){
     return false;
 });
 
-function set_csrf(xhr){
-    return xhr.setRequestHeader('X-CSRF-Token', $('meta[name="_csrf"]').attr('content'))
-}
+
+setInterval(function() {
+    $.ajax({
+        type: "get",
+        url: "/chat_msg/read",
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader('X-CSRF-Token', $('meta[name="_csrf"]').attr('content'))
+        },
+        success: function (data) {
+            $('#chat_conversation').replaceWith(data);
+            $('#chat_conversation').scrollTop($('#chat_conversation')[0].scrollHeight);
+        }
+    });
+}, 1000);

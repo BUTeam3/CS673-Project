@@ -47,6 +47,7 @@ public class HomeController {
         model.addAttribute("backlog", backlog);
         model.addAttribute("current", current);
         model.addAttribute("done", done);
+        
     }
 
     @RequestMapping(value="/task/new", method = RequestMethod.POST)
