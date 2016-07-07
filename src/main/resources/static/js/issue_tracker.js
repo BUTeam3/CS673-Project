@@ -80,7 +80,6 @@ function update_difficulty(difficulty){
             $.jGrowl({ title: "Success!", message: "Task difficulty updated" });
         }
     });
-<<<<<<< HEAD
 }
 */
 function set_csrf(xhr){

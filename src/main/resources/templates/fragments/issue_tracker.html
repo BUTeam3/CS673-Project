@@ -4,7 +4,7 @@
         <div id="done_board" class="board" data-state="3">
             <div class="task" th:each="record : ${done}" th:id="${'task_'+record.id}" th:attr="data-task-id=${record.id}">
                 <div class="task_name" th:text="${record.data}"></div>
-               <!-- <div class="task_created" th:text="${record.timestamp}"></div>-->
+                <!--<div class="task_created" th:text="${record.timestamp}"></div>-->
             </div>
         </div>
     </div>
