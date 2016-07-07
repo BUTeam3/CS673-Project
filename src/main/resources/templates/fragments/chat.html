@@ -1,36 +1,9 @@
-<!--<div id="chat_menu" th:fragment="menu">
-    <h2 id="chat_count" th:text="${accounts.size + ' Users'}"></h2>
-    <ul id="chat_list">
-        <li class="chat_option" th:each="account : ${accounts}">
-            <span class="chat_name" th:text="${account.givenName+' '+account.surname}"></span>
-        </li>
-    </ul>
-</div>
--->
-<div class="chat_box" th:fragment="box">
-    <div class="chat_header">
-        Test User
-        <span class="close-msg">&times;</span>
-    </div>
-    <div class="chat_collapse">
-	    <ul id="chat_conversation" data-state="0">
-            <li class="chat_msg" th:each="message : ${chatbox}">
-                <div class="msg_name" th:if="${account.givenName}!=${message.username}" th:text="${message.username}"></div>
-                <div class="msg_name me_msg" th:unless="${account.givenName}!=${message.username}" th:text="${message.username}"></div>
-               <!-- <div class="msg_time" th:text="${message.timestamp}"></div>-->
-				<div class="msg_content" th:if="${account.givenName}!=${message.username}" th:text="${message.data}"></div>
-                <div class="msg_content me_msg" th:unless="${account.givenName}!=${message.username}" th:text="${message.data}"></div>
-            </li>
-        </ul>		
-         <div role="document">
-            <div class="modal-content">
-                <form id="create_messge_form" method="POST">
-                    <div class="modal-body">
-						<input id="message" type="text" class="form-control" th:attr="data-user=${account.givenName}" placeholder="Enter Message"/>
-						<!--<button type="submit" class="btn btn-primary">Submit</button>-->
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+<ul id="chat_conversation" th:fragment="conversation">
+    <li class="chat_msg" th:each="message : ${chatbox}">
+        <div class="msg_name" th:if="${account.givenName}!=${message.username}" th:text="${message.username}"></div>
+        <div class="msg_name me_msg" th:unless="${account.givenName}!=${message.username}" th:text="${message.username}"></div>
+        <!-- <div class="msg_time" th:text="${message.timestamp}"></div>-->
+        <div class="msg_content" th:if="${account.givenName}!=${message.username}" th:text="${message.data}"></div>
+        <div class="msg_content me_msg" th:unless="${account.givenName}!=${message.username}" th:text="${message.data}"></div>
+    </li>
+</ul>

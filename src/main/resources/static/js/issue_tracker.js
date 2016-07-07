@@ -18,13 +18,7 @@ $(document).on('click', '.task_difficulty input:checked', function(){
 	update_difficulty($(this).val(),$(this).parent().parent().data('task-id'),1);
 });
 $(document).on('submit', '#create_issue_form', function(){
-    var dt = new Date();
-	var AMPM;
-	var time =(dt.getMonth()+1)+"/"+dt.getDate()+"/"+dt.getFullYear()+" "+dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
-	if (dt.getHours()<12)
-		AMPM="AM";
-	else
-		AMPM="PM";
+
     $theForm = $(this);
 
     // send xhr request
@@ -35,7 +29,6 @@ $(document).on('submit', '#create_issue_form', function(){
             xhr.setRequestHeader('X-CSRF-Token', $('meta[name="_csrf"]').attr('content'))
         },
         data: {
-			timestamp: time+AMPM,
             data: $('#data').val()
         },
         success: function(data) {
@@ -84,9 +77,4 @@ function update_difficulty(difficulty,id,state){
             $.jGrowl({ title: "Success!", message: "Task updated" });
         }
     });
-	alert(id+' '+state);
-}
-
-function set_csrf(xhr){
-    return xhr.setRequestHeader('X-CSRF-Token', $('meta[name="_csrf"]').attr('content'))
 }

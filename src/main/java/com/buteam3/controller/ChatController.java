@@ -50,4 +50,12 @@ public class ChatController {
         chatmsg(model);
         return "fragments/chat";
     }
+
+    @RequestMapping(value="/chat_msg/read", method = RequestMethod.GET)
+    public String readData(ModelMap model,
+                             @Valid Message message,
+                             BindingResult result) {
+        chatmsg(model);
+        return "fragments/chat";
+    }
 }

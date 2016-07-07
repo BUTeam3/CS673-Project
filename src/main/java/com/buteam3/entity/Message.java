@@ -16,8 +16,8 @@ public class Message {
     @NotEmpty
     private String data;
     private int channelid;
-	//private String timestamp;
-	private String username;
+    //private String timestamp;
+    private String username;
 
     public String getData() {
         return data;
