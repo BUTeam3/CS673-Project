@@ -14,9 +14,11 @@ function drag_and_drop(){
 $(function(){
     drag_and_drop();
 });
+/*
 $(document).on('click', '.task_difficulty input:checked', function(){
 	update_difficulty($(this).val(),$(this).parent().parent().data('task-id'),1);
 });
+*/
 $(document).on('submit', '#create_issue_form', function(){
 
     $theForm = $(this);
@@ -52,16 +54,17 @@ function update_state(id, state){
         },
         data: {
             id: id,
-            state: '3'
+            state: state
         },
         success: function(data) {
             $('#issue_tracker').html(data);
-            $.jGrowl({ title: "Success!", message: "Task updated" });
+            drag_and_drop();
+            $.jGrowl({ title: "Success!", message: "Task state updated" });
         }
     });
 }
-
-function update_difficulty(difficulty,id,state){
+/*
+function update_difficulty(difficulty){
     $.ajax({
         type: "post",
         url: "/task/update",
@@ -73,8 +76,12 @@ function update_difficulty(difficulty,id,state){
         },
         success: function(data) {
             $('#issue_tracker').html(data);
-			update_state(id,state);
-            $.jGrowl({ title: "Success!", message: "Task updated" });
+            drag_and_drop();
+            $.jGrowl({ title: "Success!", message: "Task difficulty updated" });
         }
     });
+}
+*/
+function set_csrf(xhr){
+    return xhr.setRequestHeader('X-CSRF-Token', $('meta[name="_csrf"]').attr('content'))
 }
