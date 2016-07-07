@@ -16,7 +16,7 @@ public class Message {
     @NotEmpty
     private String data;
     private int channelid;
-	private String timestamp;
+	//private String timestamp;
 	private String username;
 
     public String getData() {
@@ -24,12 +24,6 @@ public class Message {
     }
     public void setData(String data) {
         this.data = data;
-    }
-    public String getTimestamp() {
-        return timestamp;
-    }
-    public void setTimestamp(String Timestamp) {
-        this.timestamp = Timestamp;
     }
     public String getUsername() {
         return username;

@@ -10,13 +10,6 @@ $(document).on('click', '.chat_header, .chat_option', function() {
 $(document).on('submit', '#create_messge_form', function(){
 	
 	var user = $('#message').data('user');
-	var dt = new Date();
-	var AMPM;
-	var time =(dt.getMonth()+1)+"/"+dt.getDate()+"/"+dt.getFullYear()+" "+dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
-	if (dt.getHours()<12)
-		AMPM="AM";
-	else
-		AMPM="PM";
     $theForm = $(this);
     // send xhr request
     $.ajax({
@@ -27,7 +20,6 @@ $(document).on('submit', '#create_messge_form', function(){
         },
         data: {
 			channelId: '0',
-			timestamp: time+AMPM,
 			username: user,
             data: $('#message').val()
         },
