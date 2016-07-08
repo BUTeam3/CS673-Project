@@ -57,7 +57,7 @@ function update_state(id, state){
             state: state
         },
         success: function(data) {
-            $('#issue_tracker').html(data);
+        //    $('#issue_tracker').html(data);
             drag_and_drop();
             $.jGrowl({ title: "Success!", message: "Task state updated" });
         }

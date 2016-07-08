@@ -55,7 +55,7 @@ public class HomeController {
                              @Valid Record record,
                              BindingResult result) {
         if (!result.hasErrors()) {
-            repository.save(record);
+           repository.save(record);
         }
         issue_tracker(model);
         return "fragments/issue_tracker";
@@ -65,7 +65,8 @@ public class HomeController {
                              @Valid Record record,
                              BindingResult result) {
         if (!result.hasErrors()) {
-            repository.save(record);
+			record.setState(1);
+            repository.saveAndFlush(record);
         }
         issue_tracker(model);
         return "fragments/issue_tracker";

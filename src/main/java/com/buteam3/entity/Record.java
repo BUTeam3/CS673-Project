@@ -16,8 +16,8 @@ public class Record {
     @NotEmpty
     private String data;
 	private String timestamp;
-	//private int difficulty;
     private int state;
+	//private int difficulty;
 
     public String getData() {
         return data;
@@ -31,14 +31,17 @@ public class Record {
     public void setTimestamp(String Timestamp) {
         this.timestamp = Timestamp;
     }
+    public int getState() {
+        return state;
+    }
+	public void setState(int State) {
+        this.state = State;
+    }
  /*   public int getDifficulty() {
         return difficulty;
     }
     public void setDifficulty(int Difficulty) {
         this.difficulty = Difficulty;
     }
-  */  public void setState(int State) {
-        this.state = State;
-    }
-
+  */
 }
