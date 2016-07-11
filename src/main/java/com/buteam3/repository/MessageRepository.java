@@ -6,8 +6,19 @@ import java.util.List;
 
 import com.buteam3.entity.Message;
 
+/**
+ * Repository which performs various queries for message data in database
+ * 
+ * @author buteam3
+ */
 @Repository
 public interface MessageRepository extends JpaRepository<Message, Long> {
 
-	List<Message> findBychannelid(int channelid);
+    /**
+     * Find List of messages in database based on channelID
+     * 
+     * @param channelid
+     * @return List of messages found
+     */	
+    List<Message> findBychannelid(int channelid);
 }
