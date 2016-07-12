@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.buteam3.repository.RecordRepository;
 import com.buteam3.entity.Record;
 
+import com.buteam3.repository.MessageRepository;
+import com.buteam3.entity.Message;
+
 import com.stormpath.sdk.account.AccountList;
 import com.stormpath.sdk.application.Application;
 import com.stormpath.sdk.servlet.application.ApplicationResolver;
