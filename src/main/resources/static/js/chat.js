@@ -35,7 +35,8 @@ $(document).on('submit', '#create_messge_form', function(){
 
 
 
-$(function(){
+
+setInterval(function() {
     var mid = $('.chat_msg').length ? $('.chat_msg:last').data('message-id') : 0;
     $.ajax({
         type: "POST",
@@ -47,13 +48,7 @@ $(function(){
             mid: mid,
         },
         success: function (data) {
-            console.log(data);
-            //$('#chat_conversation').replaceWith(data);
-            //$('#chat_conversation').scrollTop($('#chat_conversation')[0].scrollHeight);
+            $('#chat_conversation').replaceWith(data);
         }
     });
-});
-
-setInterval(function() {
-
 }, 1000);
