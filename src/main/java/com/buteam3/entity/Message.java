@@ -22,7 +22,7 @@ public class Message {
     @NotEmpty
     private String data;
     private int channelid;
-    public String timestamp;
+    //public String timestamp;
     private String username;
 
     public String getData() {
