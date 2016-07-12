@@ -61,7 +61,7 @@ public class ChatController {
      * @param model model map linking messages to chat UI chatbox
      */
     private void chatmsg(ModelMap model) {
-        List<Message> message = repository.findBychannelid(0);
+        List<Message> message = repository.findByMidGreaterThan(model.mid);
         model.addAttribute("chatbox", message);
     }
     /**

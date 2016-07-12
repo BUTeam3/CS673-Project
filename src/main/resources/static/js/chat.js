@@ -34,30 +34,23 @@ $(document).on('submit', '#create_messge_form', function(){
 });
 
 
-$(function(){
-    $.ajax({
-        type: "get",
-        url: "/chat_msg/read",
-        beforeSend: function (xhr) {
-            xhr.setRequestHeader('X-CSRF-Token', $('meta[name="_csrf"]').attr('content'))
-        },
-        success: function (data) {
-            $('#chat_conversation').replaceWith(data);
-            $('#chat_conversation').scrollTop($('#chat_conversation')[0].scrollHeight);
-        }
-    });
-});
 
-//setInterval(function() {
-//    $.ajax({
-//        type: "get",
-//        url: "/chat_msg/read",
-//        beforeSend: function (xhr) {
-//            xhr.setRequestHeader('X-CSRF-Token', $('meta[name="_csrf"]').attr('content'))
-//        },
-//        success: function (data) {
-//            $('#chat_conversation').replaceWith(data);
-//            $('#chat_conversation').scrollTop($('#chat_conversation')[0].scrollHeight);
-//        }
-//    });
-//}, 1000);
+
+setInterval(function() {
+    $(function(){
+        $.ajax({
+            type: "POST",
+            url: "/chat_msg/read",
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('X-CSRF-Token', $('meta[name="_csrf"]').attr('content'))
+            },
+            data: {
+                mid: $('.chat_msg:last').data('message-id'),
+            },
+            success: function (data) {
+                $('#chat_conversation').replaceWith(data);
+                $('#chat_conversation').scrollTop($('#chat_conversation')[0].scrollHeight);
+            }
+        });
+    });
+}, 1000);
