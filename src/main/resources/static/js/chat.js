@@ -6,6 +6,7 @@ $(document).on('click', '#chat_button', function() {
 
 $(document).on('click', '.chat_header, .chat_option', function() {
     $('.chat_box').toggleClass('active');
+    $('#chat_conversation').scrollTop($('#chat_conversation')[0].scrollHeight);
 });
 $(document).on('submit', '#create_messge_form', function(){
     var data = $('#message').val();
@@ -36,12 +37,6 @@ $(document).on('submit', '#create_messge_form', function(){
     // prevent submitting again
     return false;
 });
-
-$(function(){
-    alert('test');
-    $('#chat_conversation').scrollTop($('#chat_conversation')[0].scrollHeight);
-});
-
 
 setInterval(function() {
     var mid = $('.chat_msg').length ? $('.chat_msg:last').data('message-id') : 0;
