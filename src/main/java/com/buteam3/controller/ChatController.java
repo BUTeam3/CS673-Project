@@ -80,7 +80,7 @@ public class ChatController {
         if (!result.hasErrors()) {
             repository.save(message);
         }
-        chatmsg(model);
+        model.addAttribute("messages", message);
         return "fragments/chat";
     }
     /**
@@ -94,7 +94,7 @@ public class ChatController {
     @RequestMapping(value="/chat_msg/read", method = RequestMethod.POST)
     public String readData(ModelMap model, Long mid) {
         List<Message> message = repository.findByMidGreaterThan(mid);
-        model.addAttribute("chatbox", message);
+        model.addAttribute("messages", messages);
         return "fragments/chat";
     }
 }

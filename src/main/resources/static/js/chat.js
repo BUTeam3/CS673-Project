@@ -37,7 +37,6 @@ $(document).on('submit', '#create_messge_form', function(){
 });
 
 $(function(){
-    console.log($('#chat_conversation')[0].scrollHeight);
     $('#chat_conversation').scrollTop($('#chat_conversation')[0].scrollHeight);
 });
 
