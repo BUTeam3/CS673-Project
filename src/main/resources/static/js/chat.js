@@ -42,7 +42,7 @@ $(function(){
             xhr.setRequestHeader('X-CSRF-Token', $('meta[name="_csrf"]').attr('content'))
         },
         data: {
-            mid: mid,
+            mid: 208,
         },
         success: function (data) {
             console.log(data);
