@@ -25,6 +25,7 @@ $(document).on('submit', '#create_messge_form', function(){
             data: $('#message').val()
         },
         success: function (data) {
+            $('#chat_conversation').scrollTop($('#chat_conversation')[0].scrollHeight);
             $('#message').removeAttr('disabled');
         }
     });
