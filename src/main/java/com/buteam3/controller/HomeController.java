@@ -34,6 +34,7 @@ import com.stormpath.sdk.servlet.application.ApplicationResolver;
 public class HomeController {
 
     private RecordRepository repository;
+    private MessageRepository messageRepository;
 
     /**
      * Constructor for home controller. Takes in a repository
