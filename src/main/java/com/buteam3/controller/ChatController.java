@@ -61,7 +61,7 @@ public class ChatController {
      * @param model model map linking messages to chat UI chatbox
      */
     private void chatmsg(ModelMap model) {
-        List<Message> message = repository.findByMidGreaterThan(model.mid);
+        List<Message> message = repository.findByMidGreaterThan(0);
         model.addAttribute("chatbox", message);
     }
     /**
@@ -95,7 +95,8 @@ public class ChatController {
     public String readData(ModelMap model,
                              @Valid Message message,
                              BindingResult result) {
-        chatmsg(model);
+        List<Message> message = repository.findByMidGreaterThan(model.mid);
+        model.addAttribute("chatbox", message);
         return "fragments/chat";
     }
 }
