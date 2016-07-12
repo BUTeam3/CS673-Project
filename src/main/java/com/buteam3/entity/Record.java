@@ -57,9 +57,6 @@ public class Record {
     public void setTimestamp(String Timestamp) {
         this.timestamp = Timestamp;
     }
-    public int getState() {
-        return state;
-    }
     /**
      * Set state of task(is it in icebox, backlog etc.)
      * 
@@ -67,5 +64,8 @@ public class Record {
      */
     public void setState(int State) {
         this.state = State;
+    }
+    public int getState() {
+        return state;
     }
 }

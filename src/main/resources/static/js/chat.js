@@ -9,15 +9,10 @@ $(document).on('click', '.chat_header, .chat_option', function() {
     $('#chat_conversation').scrollTop($('#chat_conversation')[0].scrollHeight);
 });
 $(document).on('submit', '#create_messge_form', function(){
-<<<<<<< HEAD
-	
-	var user = $('.navbar-text').text().split(' ')[1];
-=======
     var data = $('#message').val();
     $('#message').val('');
     $('#message').attr('disabled','disabled');
 	var user = $('#message').data('user');
->>>>>>> c1a9b655d60ca1dfe90c6ef37a6f38e0fe15754b
     $theForm = $(this);
     // send xhr request
     $.ajax({
