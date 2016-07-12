@@ -38,21 +38,19 @@ $(document).on('submit', '#create_messge_form', function(){
 
 setInterval(function() {
     var mid = $('.chat_msg').length ? $('.chat_msg:last').data('message-id') : 0;
-    $(function(){
-        $.ajax({
-            type: "POST",
-            url: "/chat_msg/read",
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('X-CSRF-Token', $('meta[name="_csrf"]').attr('content'))
-            },
-            data: {
-                mid: mid,
-            },
-            success: function (data) {
-                console.log(data);
-                //$('#chat_conversation').replaceWith(data);
-                //$('#chat_conversation').scrollTop($('#chat_conversation')[0].scrollHeight);
-            }
-        });
+    $.ajax({
+        type: "POST",
+        url: "/chat_msg/read",
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader('X-CSRF-Token', $('meta[name="_csrf"]').attr('content'))
+        },
+        data: {
+            mid: mid,
+        },
+        success: function (data) {
+            console.log(data);
+            //$('#chat_conversation').replaceWith(data);
+            //$('#chat_conversation').scrollTop($('#chat_conversation')[0].scrollHeight);
+        }
     });
 }, 1000);
