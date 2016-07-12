@@ -6,10 +6,18 @@ $(document).on('click', '#chat_button', function() {
 
 $(document).on('click', '.chat_header, .chat_option', function() {
     $('.chat_box').toggleClass('active');
+    $('#chat_conversation').scrollTop($('#chat_conversation')[0].scrollHeight);
 });
 $(document).on('submit', '#create_messge_form', function(){
+<<<<<<< HEAD
 	
 	var user = $('.navbar-text').text().split(' ')[1];
+=======
+    var data = $('#message').val();
+    $('#message').val('');
+    $('#message').attr('disabled','disabled');
+	var user = $('#message').data('user');
+>>>>>>> c1a9b655d60ca1dfe90c6ef37a6f38e0fe15754b
     $theForm = $(this);
     // send xhr request
     $.ajax({
@@ -21,10 +29,12 @@ $(document).on('submit', '#create_messge_form', function(){
         data: {
 			channelId: '0',
 			username: user,
-            data: $('#message').val()
+            data: data
         },
         success: function (data) {
-            $('#create_messge_form input').val('');
+            $('#chat_conversation').append(data);
+            $('#chat_conversation').scrollTop($('#chat_conversation')[0].scrollHeight);
+            $('#message').removeAttr('disabled');
         }
     });
 	
@@ -33,17 +43,19 @@ $(document).on('submit', '#create_messge_form', function(){
     return false;
 });
 
-
 setInterval(function() {
+    var mid = $('.chat_msg').length ? $('.chat_msg:last').data('message-id') : 0;
     $.ajax({
-        type: "get",
+        type: "POST",
         url: "/chat_msg/read",
         beforeSend: function (xhr) {
             xhr.setRequestHeader('X-CSRF-Token', $('meta[name="_csrf"]').attr('content'))
         },
+        data: {
+            mid: mid,
+        },
         success: function (data) {
-            $('#chat_conversation').replaceWith(data);
-            $('#chat_conversation').scrollTop($('#chat_conversation')[0].scrollHeight);
+            $('#chat_conversation').append(data);
         }
     });
 }, 1000);

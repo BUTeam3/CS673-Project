@@ -7,6 +7,12 @@ import javax.persistence.Id;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+/** Message class is an object representing a message within
+ * a chat channel. 
+ * 
+ * @author buteam3
+ */
+
 @Entity
 public class Message {
 
