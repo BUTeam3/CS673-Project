@@ -95,8 +95,8 @@ public class ChatController {
     public String readData(ModelMap model,
                              @Valid Message message,
                              BindingResult result) {
-        List<Message> message = repository.findByMidGreaterThan(model.mid);
-        model.addAttribute("chatbox", message);
+        List<Message> m = repository.findByMidGreaterThan(model.mid);
+        model.addAttribute("chatbox", m);
         return "fragments/chat";
     }
 }
