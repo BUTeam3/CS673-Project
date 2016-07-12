@@ -56,6 +56,8 @@ public class HomeController {
         Application application = ApplicationResolver.INSTANCE.getApplication(req);
         AccountList accounts = application.getAccounts();
         model.addAttribute("accounts", accounts);
+        List<Message> message = repository.findByMidGreaterThan(0);
+        model.addAttribute("chatbox", message);
         issue_tracker(model);
         return "home";
     }
