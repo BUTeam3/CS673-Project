@@ -9,5 +9,6 @@ import com.buteam3.entity.Record;
 @Repository
 public interface RecordRepository extends JpaRepository<Record, Long> {
 	List<Record> findByState(int state);
+	Record findById(long id);
 	
 }

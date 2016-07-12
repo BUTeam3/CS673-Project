@@ -51,9 +51,7 @@ public class HomeController {
     }
 
     @RequestMapping(value="/task/new", method = RequestMethod.POST)
-    public String insertData(ModelMap model,
-                             @Valid Record record,
-                             BindingResult result) {
+    public String insertData(ModelMap model,@Valid Record record,BindingResult result) {
         if (!result.hasErrors()) {
            repository.save(record);
         }
@@ -61,11 +59,13 @@ public class HomeController {
         return "fragments/issue_tracker";
     }
     @RequestMapping(value="/task/update", method = RequestMethod.POST)
-    public String updateData(ModelMap model,
-                             @Valid Record record,
-                             BindingResult result) {
+    public String updateData(ModelMap model,@Valid Record record,BindingResult result) {
         if (!result.hasErrors()) {
-            repository.save(record);
+			long x = 127;
+			Record record1 = repository.findById(x);
+			record1.setState(1);
+			repository.saveAndFlush(record1);
+			
         }
         issue_tracker(model);
         return "fragments/issue_tracker";
