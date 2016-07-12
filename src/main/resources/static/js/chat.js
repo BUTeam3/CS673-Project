@@ -48,8 +48,9 @@ setInterval(function() {
                 mid: $('.chat_msg:last').data('message-id'),
             },
             success: function (data) {
-                $('#chat_conversation').replaceWith(data);
-                $('#chat_conversation').scrollTop($('#chat_conversation')[0].scrollHeight);
+                console.log(data);
+                //$('#chat_conversation').replaceWith(data);
+                //$('#chat_conversation').scrollTop($('#chat_conversation')[0].scrollHeight);
             }
         });
     });
