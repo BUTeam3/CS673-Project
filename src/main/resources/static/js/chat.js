@@ -48,7 +48,7 @@ setInterval(function() {
             mid: mid,
         },
         success: function (data) {
-            $('#chat_conversation').replaceWith(data);
+            $('#chat_conversation').append(data);
         }
     });
 }, 1000);
