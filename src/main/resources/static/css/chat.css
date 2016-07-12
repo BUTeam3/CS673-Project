@@ -194,4 +194,5 @@
 #chat_conversation{
 	overflow-y: scroll;
 	height: 220px;
+    padding: 0;
 }
