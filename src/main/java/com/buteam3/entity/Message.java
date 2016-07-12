@@ -3,8 +3,6 @@ package com.buteam3.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.DateTimeFormat;
-import javax.persistence.Date;
 import javax.persistence.Id;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -24,8 +22,7 @@ public class Message {
     @NotEmpty
     private String data;
     private int channelid;
-    @DateTimeFormat("MM/dd HH:mm")
-    public Date timestamp;
+    public Timestamp timestamp;
     private String username;
 
     public String getData() {
