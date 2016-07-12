@@ -8,7 +8,8 @@ $(document).on('click', '.chat_header, .chat_option', function() {
     $('.chat_box').toggleClass('active');
 });
 $(document).on('submit', '#create_messge_form', function(){
-    $('#create_messge_form input').val('');
+    var data = $('#message').val();
+    $('#message').val('');
     $('#message').attr('disabled','disabled');
 	var user = $('#message').data('user');
     $theForm = $(this);
@@ -22,7 +23,7 @@ $(document).on('submit', '#create_messge_form', function(){
         data: {
 			channelId: '0',
 			username: user,
-            data: $('#message').val()
+            data: data
         },
         success: function (data) {
             $('#chat_conversation').scrollTop($('#chat_conversation')[0].scrollHeight);
@@ -36,6 +37,7 @@ $(document).on('submit', '#create_messge_form', function(){
 });
 
 $(function(){
+    console.log($('#chat_conversation')[0].scrollHeight);
     $('#chat_conversation').scrollTop($('#chat_conversation')[0].scrollHeight);
 });
 
