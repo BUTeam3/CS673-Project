@@ -3,6 +3,8 @@ package com.buteam3.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.DateTimeFormat;
+import javax.persistence.Date;
 import javax.persistence.Id;
 
 import org.hibernate.validator.constraints.NotEmpty;
