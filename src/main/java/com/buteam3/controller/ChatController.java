@@ -11,7 +11,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.util.StringUtils;
 
 import com.buteam3.repository.MessageRepository;
 import com.buteam3.entity.Message;
@@ -93,8 +92,8 @@ public class ChatController {
      * @return 
      */
     @RequestMapping(value="/chat_msg/read", method = RequestMethod.POST)
-    public String readData(Long mid) {
+    public message readData(Long mid) {
         List<Message> message = repository.findByMidGreaterThan(mid);
-        return StringUtils.arrayToCommaDelimitedString(message);
+        return message;
     }
 }
