@@ -92,11 +92,8 @@ public class ChatController {
      * @return 
      */
     @RequestMapping(value="/chat_msg/read", method = RequestMethod.GET)
-    public String readData(ModelMap model,
-                             @Valid Message message,
-                             BindingResult result) {
-        List<Message> m = repository.findByMidGreaterThan(model.mid);
-        model.addAttribute("chatbox", m);
-        return "fragments/chat";
+    public String readData(Long mid) {
+        List<Message> message = repository.findByMidGreaterThan(model.mid);
+        return message;
     }
 }
