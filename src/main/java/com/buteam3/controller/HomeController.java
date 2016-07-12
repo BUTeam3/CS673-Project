@@ -42,8 +42,9 @@ public class HomeController {
      * @param repository repository of tasks 
      */
     @Autowired
-    public HomeController(RecordRepository repository) {
+    public HomeController(RecordRepository repository, MessageRepository messageRepository) {
         this.repository = repository;
+        this.messageRepository = messageRepository;
     }
     
     /**
@@ -55,7 +56,7 @@ public class HomeController {
      * @return 
      */
     @RequestMapping(value="/", method = RequestMethod.GET)
-    public String home(ModelMap model, HttpServletRequest req, MessageRepository messageRepository) {
+    public String home(ModelMap model, HttpServletRequest req) {
         Application application = ApplicationResolver.INSTANCE.getApplication(req);
         AccountList accounts = application.getAccounts();
         model.addAttribute("accounts", accounts);
