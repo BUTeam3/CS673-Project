@@ -8,7 +8,8 @@ $(document).on('click', '.chat_header, .chat_option', function() {
     $('.chat_box').toggleClass('active');
 });
 $(document).on('submit', '#create_messge_form', function(){
-	
+    $('#create_messge_form input').val('');
+    $('#message').attr('disabled','disabled');
 	var user = $('#message').data('user');
     $theForm = $(this);
     // send xhr request
@@ -24,7 +25,7 @@ $(document).on('submit', '#create_messge_form', function(){
             data: $('#message').val()
         },
         success: function (data) {
-            $('#create_messge_form input').val('');
+            $('#message').removeAttr('disabled');
         }
     });
 	
