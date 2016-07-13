@@ -49,7 +49,7 @@ public class ChatController {
      * @return 
      */
     public String chat(ModelMap model, HttpServletRequest req) {
-            Application application = ApplicationResolver.INSTANCE.getApplication(req);
+    Application application = ApplicationResolver.INSTANCE.getApplication(req);
     AccountList accounts = application.getAccounts();
     model.addAttribute("accounts", accounts);
     chatmsg(model);

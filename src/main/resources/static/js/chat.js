@@ -9,6 +9,7 @@ $(document).on('click', '.chat_header, .chat_option', function() {
     $('#chat_conversation').scrollTop($('#chat_conversation')[0].scrollHeight);
 });
 $(document).on('submit', '#create_messge_form', function(){
+	var user = $('.navbar-text').text().split(' ')[1];
     var data = $('#message').val();
     $('#message').val('');
     $('#message').attr('disabled','disabled');

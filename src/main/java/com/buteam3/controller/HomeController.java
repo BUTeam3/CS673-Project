@@ -114,12 +114,18 @@ public class HomeController {
      * @return 
      */
     @RequestMapping(value="/task/update", method = RequestMethod.POST)
-    public String updateData(ModelMap model,Long id,int state) {		
-		long x = 127;
+    public String updateData(ModelMap model,Long id,int state) {	
 		Record record = repository.findById(id);
 		record.setState(state);
 		repository.save(record);
-				
+		issue_tracker(model);
+		return "fragments/issue_tracker";
+    }
+    @RequestMapping(value="/task/difficulty", method = RequestMethod.POST)
+    public String updateDifficulty(ModelMap model,Long id,int difficulty) {	
+		Record record = repository.findById(id);
+		record.setDifficulty(difficulty);
+		repository.save(record);
 		issue_tracker(model);
 		return "fragments/issue_tracker";
     }
