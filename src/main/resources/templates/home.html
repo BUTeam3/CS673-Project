@@ -75,13 +75,7 @@
         </div>
         <div class="chat_collapse">
             <ul id="chat_conversation">
-                <li class="chat_msg" th:each="message : ${messages}" th:id="${'message_'+message.mid}" th:attr="data-message-id=${message.mid}">
-                    <div class="msg_name" th:if="${account.givenName}!=${message.username}" th:text="${message.username}"></div>
-                    <div class="msg_name me_msg" th:unless="${account.givenName}!=${message.username}" th:text="${message.username}"></div>
-                    <!-- <div class="msg_time" th:text="${message.timestamp}"></div>-->
-                    <div class="msg_content" th:if="${account.givenName}!=${message.username}" th:text="${message.data}"></div>
-                    <div class="msg_content me_msg" th:unless="${account.givenName}!=${message.username}" th:text="${message.data}"></div>
-                </li>
+                <li th:replace="fragments/chat :: conversation"></li>
             </ul>
             <div role="document">
                 <div class="modal-content">
