@@ -34,7 +34,6 @@ import com.stormpath.sdk.servlet.application.ApplicationResolver;
 public class HomeController {
 
     private RecordRepository repository;
-    private MessageRepository messageRepository;
 
     /**
      * Constructor for home controller. Takes in a repository
@@ -43,9 +42,8 @@ public class HomeController {
      * @param repository repository of tasks 
      */
     @Autowired
-    public HomeController(RecordRepository repository, MessageRepository messageRepository) {
+    public HomeController(RecordRepository repository) {
         this.repository = repository;
-        this.messageRepository = messageRepository;
     }
     
     /**
@@ -61,8 +59,6 @@ public class HomeController {
         Application application = ApplicationResolver.INSTANCE.getApplication(req);
         AccountList accounts = application.getAccounts();
         model.addAttribute("accounts", accounts);
-        List<Message> messages = messageRepository.findByMidGreaterThan(0);
-        model.addAttribute("message", messages);
         issue_tracker(model);
         return "home";
     }
@@ -99,11 +95,9 @@ public class HomeController {
      * @return 
      */
     @RequestMapping(value="/task/new", method = RequestMethod.POST)
-    public String insertData(ModelMap model,
-                             @Valid Record record,
-                             BindingResult result) {
+    public String insertData(ModelMap model,@Valid Record record,BindingResult result) {
         if (!result.hasErrors()) {
-            repository.save(record);
+           repository.save(record);
         }
         issue_tracker(model);
         return "fragments/issue_tracker";
@@ -120,13 +114,19 @@ public class HomeController {
      * @return 
      */
     @RequestMapping(value="/task/update", method = RequestMethod.POST)
-    public String updateData(ModelMap model,
-                             @Valid Record record,
-                             BindingResult result) {
-        if (!result.hasErrors()) {
-            repository.save(record);
-        }
-        issue_tracker(model);
-        return "fragments/issue_tracker";
+    public String updateData(ModelMap model,Long id,int state) {	
+		Record record = repository.findById(id);
+		record.setState(state);
+		repository.save(record);
+		issue_tracker(model);
+		return "fragments/issue_tracker";
+    }
+    @RequestMapping(value="/task/difficulty", method = RequestMethod.POST)
+    public String updateDifficulty(ModelMap model,Long id,int difficulty) {	
+		Record record = repository.findById(id);
+		record.setDifficulty(difficulty);
+		repository.save(record);
+		issue_tracker(model);
+		return "fragments/issue_tracker";
     }
 }

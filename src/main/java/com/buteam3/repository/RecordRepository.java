@@ -14,12 +14,12 @@ import com.buteam3.entity.Record;
 
 @Repository
 public interface RecordRepository extends JpaRepository<Record, Long> {
-
      /**
      * Find List of Records in database based on passed state value
      * 
      * @param state
      * @return List of Records found
      */	
-        List<Record> findByState(int state);
+        List<Record> findByState(int state);		
+		Record findById(long id);
 }
