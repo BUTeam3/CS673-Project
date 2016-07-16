@@ -177,7 +177,7 @@
     color: white !important;
 }
 
-.chat_box input {
+.chat_box textarea {
     box-sizing: border-box;
     width: 100%;
     padding: 5px;

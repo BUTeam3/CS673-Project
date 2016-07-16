@@ -13,7 +13,6 @@ $(document).on('submit', '#create_messge_form', function(){
     var data = $('#message').val();
     $('#message').val('');
     $('#message').attr('disabled','disabled');
-	var user = $('#message').data('user');
     $theForm = $(this);
     // send xhr request
     $.ajax({
@@ -38,7 +37,6 @@ $(document).on('submit', '#create_messge_form', function(){
     // prevent submitting again
     return false;
 });
-
 setInterval(function() {
     var mid = $('.chat_msg').length ? $('.chat_msg:last').data('message-id') : 0;
     $.ajax({
