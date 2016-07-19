@@ -1,10 +1,4 @@
-$(document).on('click', '#chat_button', function() {
-    var screen_top = $(window).scrollTop();
-    $('#chat_menu').css('top', screen_top);
-    $('html').toggleClass('chat_menu_open');
-});
-
-$(document).on('click', '.chat_header, .chat_option', function() {
+$(document).on('click', '.chat_header', function() {
     $('.chat_box').toggleClass('active');
     $('#chat_conversation').scrollTop($('#chat_conversation')[0].scrollHeight);
 });

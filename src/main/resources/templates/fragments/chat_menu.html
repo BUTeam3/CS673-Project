@@ -2,7 +2,7 @@
    <h2 id="chat_count" th:text="${'Tasks'}"></h2>
     <ul id="chat_list">
         <li class="chat_option" th:each="record : ${tasks}">
-            <span class="chat_name" th:text="${record.data}"></span>
+            <span class="chat_name" th:text="${record.data+' ('+record.id+')'}" th:id="${record.id}"></span>
         </li>
     </ul>
 </div>

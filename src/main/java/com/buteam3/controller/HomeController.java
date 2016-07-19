@@ -14,9 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.buteam3.repository.RecordRepository;
 import com.buteam3.entity.Record;
-
-import com.buteam3.repository.MessageRepository;
-import com.buteam3.entity.Message;
+import com.buteam3.repository.ChannelRepository;
+import com.buteam3.entity.Channel;
 
 import com.stormpath.sdk.account.AccountList;
 import com.stormpath.sdk.application.Application;
@@ -34,7 +33,7 @@ import com.stormpath.sdk.servlet.application.ApplicationResolver;
 public class HomeController {
 
     private RecordRepository repository;
-
+	private ChannelRepository Chrepository;
     /**
      * Constructor for home controller. Takes in a repository
      * of tasks which are then loaded in UI. 
@@ -42,8 +41,9 @@ public class HomeController {
      * @param repository repository of tasks 
      */
     @Autowired
-    public HomeController(RecordRepository repository) {
+    public HomeController(RecordRepository repository, ChannelRepository Chrepository) {
         this.repository = repository;
+        this.Chrepository = Chrepository;
     }
     
     /**
@@ -76,10 +76,12 @@ public class HomeController {
         List<Record> backlog = repository.findByState(1);
         List<Record> current = repository.findByState(2);
         List<Record> done = repository.findByState(3);
+        List<Record> tasks = repository.findAll();
         model.addAttribute("icebox", icebox);
         model.addAttribute("backlog", backlog);
         model.addAttribute("current", current);
         model.addAttribute("done", done);
+        model.addAttribute("tasks", tasks);
         
     }
 
@@ -95,10 +97,8 @@ public class HomeController {
      * @return 
      */
     @RequestMapping(value="/task/new", method = RequestMethod.POST)
-    public String insertData(ModelMap model,@Valid Record record,BindingResult result) {
-        if (!result.hasErrors()) {
-           repository.save(record);
-        }
+    public String insertData(ModelMap model,@Valid Record record) {
+        repository.save(record);
         issue_tracker(model);
         return "fragments/issue_tracker";
     }
@@ -113,6 +113,26 @@ public class HomeController {
      * @param result
      * @return 
      */
+    @RequestMapping(value="/task/updateChannel", method = RequestMethod.POST)
+    public String updateChannel(ModelMap model,int met, String data) {
+		Channel channel;
+		if (met==0){
+			channel = new Channel();
+			Record record = repository.findByData(data);
+			channel.setChannelName(data);
+			channel.setTaskId((int)record.getId());
+			Chrepository.save(channel);
+		}
+/*		else{
+			channel = Chrepository.findByChannelname(data);
+			Record record = repository.findByData(data);
+			record.setChannelId(channel.getChannelId());
+			repository.save(record);
+		}
+*/		issue_tracker(model);
+		return "fragments/issue_tracker";
+	
+    }
     @RequestMapping(value="/task/update", method = RequestMethod.POST)
     public String updateData(ModelMap model,Long id,int state) {	
 		Record record = repository.findById(id);

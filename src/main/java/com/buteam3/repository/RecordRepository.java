@@ -21,5 +21,6 @@ public interface RecordRepository extends JpaRepository<Record, Long> {
      * @return List of Records found
      */	
         List<Record> findByState(int state);		
-		Record findById(long id);
+		Record findById(long id);		
+		Record findByData(String data);
 }

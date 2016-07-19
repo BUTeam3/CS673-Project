@@ -1,4 +1,4 @@
-.chat_menu_open {
+.chat_menu_open, .task_menu_open {
     -webkit-transition: -webkit-transform 0.3s ease-in-out;
     transition: -webkit-transform 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out;
@@ -72,6 +72,8 @@
 
 #chat_list{
     padding-left: 0px;
+	overflow-y:scroll;
+	height:inherit;
 }
 
 .chat_option {
@@ -101,12 +103,19 @@
     width: 300px;
     background: #fff;
 }
-
-.chat_box.active .chat_collapse{
+.task_box{
+	margin-right:310px;
+    position: fixed;
+    bottom: 0;
+    right: 200px;
+    width: 300px;
+    background: #fff;
+}
+.chat_box.active .chat_collapse, .task_box.active .task_collapse{
     height: 300px;
 }
 
-.chat_collapse{
+.chat_collapse, .task_collapse{
     height: 0;
     overflow: hidden;
     -webkit-transition: height 0.3s ease-in;
@@ -115,7 +124,7 @@
     border: 1px solid #ccc;
 }
 
-.chat_conversation {
+.chat_conversation, .task_conversation {
     height: 236px;
     margin: 0;
     padding: 15px;
@@ -123,7 +132,7 @@
     overflow-x: hidden;
 }
 
-.chat_header {
+.chat_header, .task_header {
     color: #ccc;
     padding: 15px 10px;
     background: #343436;
@@ -177,7 +186,7 @@
     color: white !important;
 }
 
-.chat_box textarea {
+.chat_box input, .task_box input {
     box-sizing: border-box;
     width: 100%;
     padding: 5px;
@@ -191,7 +200,7 @@
     margin-top: -4px;
 }
 
-#chat_conversation{
+#chat_conversation, #task_conversation{
 	overflow-y: scroll;
 	height: 220px;
     padding: 0;

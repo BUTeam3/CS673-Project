@@ -24,6 +24,7 @@ public class Record {
 	private String timestamp;
     private int state;
 	private int difficulty;
+	private long channelid;
     
     
     /**
@@ -77,4 +78,13 @@ public class Record {
     public void setDifficulty(int Difficulty) {
         this.difficulty = Difficulty;
     }
+	public long getId(){
+		return id;
+	}
+//    public void setChannelId(long ChannelId) {
+//        this.channelid = ChannelId;
+//    }
+//    public long getChannelId() {
+//        return channelid;
+//    }	
 }
