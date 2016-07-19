@@ -37,5 +37,11 @@ public class Message {
     public void setUsername(String Username) {
         this.username = Username;
     }
+    public int getChannelId() {
+        return channelid;
+    }
+    public void setChannelId(int ChannelId) {
+        this.channelid = ChannelId;
+    }
 
 }

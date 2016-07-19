@@ -88,8 +88,8 @@ public class ChatController {
      * @return 
      */
     @RequestMapping(value="/chat_msg/read", method = RequestMethod.POST)
-    public String readData(ModelMap model, Long mid) {
-        List<Message> messages = repository.findByMidGreaterThan(mid);
+    public String readData(ModelMap model, int mid) {
+        List<Message> messages = repository.findBychannelid(mid);
         model.addAttribute("messages", messages);
         return "fragments/chat";
     }

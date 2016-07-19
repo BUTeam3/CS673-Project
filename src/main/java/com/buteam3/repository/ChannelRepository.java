@@ -20,7 +20,7 @@ public interface ChannelRepository extends JpaRepository<Channel, Long> {
      * @param channelid
      * @return List of messages found
      */	
-    List<Channel> findBytaskid(int taskid);
 	Channel findByChannelname(String channelname);
+	Channel findByTaskid(int taskid);
 
 }

@@ -26,8 +26,6 @@ $(document).on('submit', '#create_messge_form', function(){
             $('#message').removeAttr('disabled');
         }
     });
-	
-	
     // prevent submitting again
     return false;
 });

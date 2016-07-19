@@ -48,8 +48,7 @@ $(document).on('submit', '#create_issue_form', function(){
             xhr.setRequestHeader('X-CSRF-Token', $('meta[name="_csrf"]').attr('content'))
         },
         data: {
-            data: $('#data').val(),
-			difficulty: 0
+            data: $('#data').val()
         },
         success: function(data) {
             $('#issue_tracker').html(data);
@@ -82,41 +81,6 @@ function update_state(id, state){
         }
     });
 }
-function update_channel_table(data){
-    $.ajax({
-        type: "post",
-        url: "/task/updateChannel",
-        beforeSend: function(xhr){
-            xhr.setRequestHeader('X-CSRF-Token', $('meta[name="_csrf"]').attr('content'))
-        },
-        data: {
-			met:0,
-            data: data
-        },
-        success: function() {
-            drag_and_drop();
-			update_record_channel(data);
-        }
-    });
-}
-function update_record_channel(data){
-    $.ajax({
-        type: "post",
-        url: "/task/updateChannel",
-        beforeSend: function(xhr){
-            xhr.setRequestHeader('X-CSRF-Token', $('meta[name="_csrf"]').attr('content'))
-        },
-        data: {
-			met:1,
-            data: data
-        },
-        success: function() {
-            drag_and_drop();
-        }
-    });
-}
-
-
 function update_difficulty(id, difficulty){
     $.ajax({
         type: "post",
@@ -135,7 +99,6 @@ function update_difficulty(id, difficulty){
         }
     });
 }
-
 function set_csrf(xhr){
     return xhr.setRequestHeader('X-CSRF-Token', $('meta[name="_csrf"]').attr('content'))
 }
