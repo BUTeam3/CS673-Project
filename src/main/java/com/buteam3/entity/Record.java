@@ -19,11 +19,12 @@ public class Record {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long id;
+	private Long channelid;
     @NotEmpty
     private String data;
 	private String timestamp;
-	//private int difficulty;
     private int state;
+	private int difficulty;
     
     
     /**
@@ -58,13 +59,6 @@ public class Record {
     public void setTimestamp(String Timestamp) {
         this.timestamp = Timestamp;
     }
- /*   public int getDifficulty() {
-        return difficulty;
-    }
-    public void setDifficulty(int Difficulty) {
-        this.difficulty = Difficulty;
-    }
-  */
     /**
      * Set state of task(is it in icebox, backlog etc.)
      * 
@@ -73,5 +67,24 @@ public class Record {
     public void setState(int State) {
         this.state = State;
     }
-
+    public int getState() {
+        return state;
+    }
+    /**
+     * Set difficulty of task(is it in icebox, backlog etc.)
+     * 
+     * @param Difficulty integer representing difficulty of task
+     */
+    public void setDifficulty(int Difficulty) {
+        this.difficulty = Difficulty;
+    }
+	public long getId(){
+		return id;
+	}
+    public void setChannelId(long ChannelId) {
+        this.channelid = ChannelId;
+    }
+    public long getChannelId() {
+        return channelid;
+    }	
 }

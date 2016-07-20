@@ -1,18 +1,12 @@
-$(document).on('click', '#chat_button', function() {
-    var screen_top = $(window).scrollTop();
-    $('#chat_menu').css('top', screen_top);
-    $('html').toggleClass('chat_menu_open');
-});
-
-$(document).on('click', '.chat_header, .chat_option', function() {
+$(document).on('click', '.chat_header', function() {
     $('.chat_box').toggleClass('active');
     $('#chat_conversation').scrollTop($('#chat_conversation')[0].scrollHeight);
 });
 $(document).on('submit', '#create_messge_form', function(){
+	var user = $('.navbar-text').text().split(' ')[1];
     var data = $('#message').val();
     $('#message').val('');
     $('#message').attr('disabled','disabled');
-	var user = $('#message').data('user');
     $theForm = $(this);
     // send xhr request
     $.ajax({
@@ -32,12 +26,9 @@ $(document).on('submit', '#create_messge_form', function(){
             $('#message').removeAttr('disabled');
         }
     });
-	
-	
     // prevent submitting again
     return false;
 });
-
 setInterval(function() {
     var mid = $('.chat_msg').length ? $('.chat_msg:last').data('message-id') : 0;
     $.ajax({

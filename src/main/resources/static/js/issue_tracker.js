@@ -14,11 +14,28 @@ function drag_and_drop(){
 $(function(){
     drag_and_drop();
 });
-/*
 $(document).on('click', '.task_difficulty input:checked', function(){
-	update_difficulty($(this).val(),$(this).parent().parent().data('task-id'),1);
+	var id=$(this).parent().parent().data('task-id');
+	update_state(id,1);
+	update_difficulty(id,$(this).val());
 });
-*/
+$(document).on('click', 'input[value=Start]', function(){
+	var id=$(this).data('task-id');
+	update_state(id,2);
+});
+$(document).on('click', '.task_done', function(){
+	$('.AcceptReject_'+this.id).show();
+	$(this).hide();
+});
+$(document).on('click', '.task_accept', function(){
+	var id=$(this).parent().parent().data('task-id');
+	update_state(id,3);
+});
+$(document).on('click', '.task_reject', function(){
+	var id=$(this).parent().parent().data('task-id');
+	update_state(id,1);
+});
+
 $(document).on('submit', '#create_issue_form', function(){
 
     $theForm = $(this);
@@ -36,6 +53,7 @@ $(document).on('submit', '#create_issue_form', function(){
         success: function(data) {
             $('#issue_tracker').html(data);
             drag_and_drop();
+			update_channel_table($('#data').val());
             $('#create_issue_modal').modal('hide');
             $.jGrowl({ title: "Success!", message: "Task added" });
         }
@@ -63,25 +81,24 @@ function update_state(id, state){
         }
     });
 }
-/*
-function update_difficulty(difficulty){
+function update_difficulty(id, difficulty){
     $.ajax({
         type: "post",
-        url: "/task/update",
+        url: "/task/difficulty",
         beforeSend: function(xhr){
             xhr.setRequestHeader('X-CSRF-Token', $('meta[name="_csrf"]').attr('content'))
         },
         data: {
+            id: id,
             difficulty: difficulty
         },
         success: function(data) {
             $('#issue_tracker').html(data);
             drag_and_drop();
-            $.jGrowl({ title: "Success!", message: "Task difficulty updated" });
+            $.jGrowl({ title: "Success!", message: "Task Difficulty updated" });
         }
     });
 }
-*/
 function set_csrf(xhr){
     return xhr.setRequestHeader('X-CSRF-Token', $('meta[name="_csrf"]').attr('content'))
 }

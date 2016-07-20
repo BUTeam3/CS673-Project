@@ -13,7 +13,9 @@
 .modal-body .form-horizontal .col-sm-offset-2 {
     margin-left: 15px;
 }
-
+#issue_tracker h4 {
+	font-family: "Lato";
+}
 .board {
 	background-color:  rgba(25, 25, 25, .5);
 	border: 1px solid grey;

@@ -81,16 +81,36 @@
                 <div class="modal-content">
                     <form id="create_messge_form" method="POST">
                         <div class="modal-body">
-                            <input id="message" type="text" class="form-control" th:attr="data-user=${account.givenName}" placeholder="Enter Message"/>
-                            <!--<button type="submit" class="btn btn-primary">Submit</button>-->
+                            <input id="message" type="text" class="form-control" placeholder="Enter Message"/>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <!--<div th:replace="fragments/chat_menu :: menu">&nbsp;</div>-->
-    <!--<button type="button" id="chat_button" th:text="${'Chat (' + accounts.size + ')'}"></button>-->
+	
+    <div class="task_box">
+        <div class="task_header">
+            Issue Chat
+            <!--<span class="close-msg">&times;</span>-->
+        </div>
+        <div class="task_collapse">
+            <ul id="task_conversation">
+                <li th:replace="fragments/chat :: conversation"></li>
+            </ul>
+            <div role="document">
+                <div class="modal-content">
+                    <form id="create_chat_messge_form" method="POST">
+                        <div class="modal-body">
+                            <input id="taskMessage" alt="0" type="text" class="form-control" placeholder="Enter Message"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="fragments/chat_menu :: menu">&nbsp;</div>
+    <button type="button" id="chat_button" th:text="${'Tasks'}"></button>
 
 </div>
 
@@ -101,5 +121,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.1/dragula.min.js"></script>
 <script src="js/issue_tracker.js"></script>
 <script src="js/chat.js"></script>
+<script src="js/task.js"></script>
 </body>
 </html>

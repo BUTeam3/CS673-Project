@@ -15,9 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.buteam3.repository.RecordRepository;
 import com.buteam3.entity.Record;
 
-import com.buteam3.repository.MessageRepository;
-import com.buteam3.entity.Message;
-
 import com.stormpath.sdk.account.AccountList;
 import com.stormpath.sdk.application.Application;
 import com.stormpath.sdk.servlet.application.ApplicationResolver;
@@ -34,8 +31,6 @@ import com.stormpath.sdk.servlet.application.ApplicationResolver;
 public class HomeController {
 
     private RecordRepository repository;
-    private MessageRepository messageRepository;
-
     /**
      * Constructor for home controller. Takes in a repository
      * of tasks which are then loaded in UI. 
@@ -43,9 +38,8 @@ public class HomeController {
      * @param repository repository of tasks 
      */
     @Autowired
-    public HomeController(RecordRepository repository, MessageRepository messageRepository) {
+    public HomeController(RecordRepository repository) {
         this.repository = repository;
-        this.messageRepository = messageRepository;
     }
     
     /**
@@ -61,8 +55,6 @@ public class HomeController {
         Application application = ApplicationResolver.INSTANCE.getApplication(req);
         AccountList accounts = application.getAccounts();
         model.addAttribute("accounts", accounts);
-        List<Message> messages = messageRepository.findByMidGreaterThan(0);
-        model.addAttribute("message", messages);
         issue_tracker(model);
         return "home";
     }
@@ -80,10 +72,12 @@ public class HomeController {
         List<Record> backlog = repository.findByState(1);
         List<Record> current = repository.findByState(2);
         List<Record> done = repository.findByState(3);
+        List<Record> tasks = repository.findAll();
         model.addAttribute("icebox", icebox);
         model.addAttribute("backlog", backlog);
         model.addAttribute("current", current);
         model.addAttribute("done", done);
+        model.addAttribute("tasks", tasks);
         
     }
 
@@ -99,12 +93,8 @@ public class HomeController {
      * @return 
      */
     @RequestMapping(value="/task/new", method = RequestMethod.POST)
-    public String insertData(ModelMap model,
-                             @Valid Record record,
-                             BindingResult result) {
-        if (!result.hasErrors()) {
-            repository.save(record);
-        }
+    public String insertData(ModelMap model,@Valid Record record) {
+        repository.save(record);
         issue_tracker(model);
         return "fragments/issue_tracker";
     }
@@ -120,13 +110,19 @@ public class HomeController {
      * @return 
      */
     @RequestMapping(value="/task/update", method = RequestMethod.POST)
-    public String updateData(ModelMap model,
-                             @Valid Record record,
-                             BindingResult result) {
-        if (!result.hasErrors()) {
-            repository.save(record);
-        }
-        issue_tracker(model);
-        return "fragments/issue_tracker";
+    public String updateData(ModelMap model,Long id,int state) {	
+		Record record = repository.findById(id);
+		record.setState(state);
+		repository.save(record);
+		issue_tracker(model);
+		return "fragments/issue_tracker";
+    }
+    @RequestMapping(value="/task/difficulty", method = RequestMethod.POST)
+    public String updateDifficulty(ModelMap model,Long id,int difficulty) {	
+		Record record = repository.findById(id);
+		record.setDifficulty(difficulty);
+		repository.save(record);
+		issue_tracker(model);
+		return "fragments/issue_tracker";
     }
 }
