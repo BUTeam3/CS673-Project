@@ -87,6 +87,7 @@ public class TaskChatController {
 	
     @RequestMapping(value="/issue/readmsg", method = RequestMethod.POST)
     public String readData(ModelMap model, int id) {
+		model = new ModelMap();
 		Channel channel = Chrepository.findByTaskid(id);
         List<Message> messages = Msrepository.findBychannelid((int)channel.getChannelId());
         model.addAttribute("messages", messages);
