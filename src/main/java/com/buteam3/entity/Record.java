@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.sql.Timestamp;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -22,7 +23,7 @@ public class Record {
 	private Long channelid;
     @NotEmpty
     private String data;
-	private String timestamp;
+	private Timestamp timestamp;
     private int state;
 	private int difficulty;
     
@@ -48,18 +49,18 @@ public class Record {
      * 
      * @return timestamp of task as a string
      */
-    public String getTimestamp() {
-        return timestamp;
-    }
+//    public Timestamp getTimestamp() {
+//       return timestamp;
+//    }
     /**
      * Set timestamp of the task
      * 
      * @param Timestamp string representing new timestamp
      */
-    public void setTimestamp(String Timestamp) {
+/*    public void setTimestamp(Timestamp Timestamp) {
         this.timestamp = Timestamp;
     }
-    /**
+*/    /**
      * Set state of task(is it in icebox, backlog etc.)
      * 
      * @param State integer representing state of task

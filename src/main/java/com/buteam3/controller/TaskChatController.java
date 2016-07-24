@@ -61,7 +61,7 @@ public class TaskChatController {
         return "fragments/chat";
     }
     private void task_chat(ModelMap model) {
-        List<Message> message = Msrepository.findBychannelid(0);
+        List<Message> message = Msrepository.findBychannelid(-1);
         model.addAttribute("chatbox", message);
         
     }
@@ -87,9 +87,9 @@ public class TaskChatController {
 	
     @RequestMapping(value="/issue/readmsg", method = RequestMethod.POST)
     public String readData(ModelMap model, int id) {
-		model = new ModelMap();
 		Channel channel = Chrepository.findByTaskid(id);
-        List<Message> messages = Msrepository.findBychannelid((int)channel.getChannelId());
+        List<Message> messages = Msrepository.findBychannelid((int)Chrepository.findByTaskid(id).getChannelId());
+        //List<Message> messages = Msrepository.findBychannelid(id);
         model.addAttribute("messages", messages);
         return "fragments/chat";
     }

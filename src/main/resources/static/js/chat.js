@@ -30,7 +30,7 @@ $(document).on('submit', '#create_messge_form', function(){
     return false;
 });
 setInterval(function() {
-    var mid = $('.chat_msg').length ? $('.chat_msg:last').data('message-id') : 0;
+    var mid = $('#chat_conversation li').length ? -1 : 0;
     $.ajax({
         type: "POST",
         url: "/chat_msg/read",
@@ -38,7 +38,7 @@ setInterval(function() {
             xhr.setRequestHeader('X-CSRF-Token', $('meta[name="_csrf"]').attr('content'))
         },
         data: {
-            mid: mid,
+            mid: mid
         },
         success: function (data) {
             $('#chat_conversation').append(data);
