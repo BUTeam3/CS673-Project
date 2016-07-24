@@ -35,7 +35,7 @@ public class HomeController {
      * Constructor for home controller. Takes in a repository
      * of tasks which are then loaded in UI. 
      * 
-     * @param repository repository of tasks 
+     * @param Record repository of tasks 
      */
     @Autowired
     public HomeController(RecordRepository repository) {
@@ -89,7 +89,6 @@ public class HomeController {
      * 
      * @param model
      * @param record
-     * @param result
      * @return 
      */
     @RequestMapping(value="/task/new", method = RequestMethod.POST)
@@ -105,8 +104,8 @@ public class HomeController {
      * method.
      * 
      * @param model
-     * @param record
-     * @param result
+     * @param id
+     * @param state
      * @return 
      */
     @RequestMapping(value="/task/update", method = RequestMethod.POST)
@@ -117,6 +116,15 @@ public class HomeController {
 		issue_tracker(model);
 		return "fragments/issue_tracker";
     }
+    /**
+     * Method called when difficulty of a task in the icebox is updated,
+     * task will be moved to the backlog column
+     * 
+     * @param model
+     * @param id
+     * @param state
+     * @return 
+     */
     @RequestMapping(value="/task/difficulty", method = RequestMethod.POST)
     public String updateDifficulty(ModelMap model,Long id,int difficulty) {	
 		Record record = repository.findById(id);

@@ -43,7 +43,9 @@ public class ChatController {
     }	
     
     /**
-     * 
+     * Gets accounts from thymeleaf and adds it to the model to be used
+	 * calls the chatmsg method and sends it the model to be populated by a list of messages
+	 *
      * @param model
      * @param req
      * @return 
@@ -56,7 +58,7 @@ public class ChatController {
 		return "chat";
     }
     /**
-     * Loads a a list of messages from database based on channel id
+     * Loads a list of messages from database based on channel id
      * 
      * @param model model map linking messages to chat UI chatbox
      */
@@ -70,7 +72,6 @@ public class ChatController {
      * 
      * @param model
      * @param message
-     * @param result
      * @return 
      */
     @RequestMapping(value="/chat_msg/new", method = RequestMethod.POST)
@@ -80,11 +81,10 @@ public class ChatController {
         return "fragments/chat";
     }
     /**
-     * Calls chatmsg to Load a a list of messages from database based on channel id
+     * Repopulates the chat box with new messages from other users
      * 
      * @param model
-     * @param message
-     * @param result
+	 * @param mid
      * @return 
      */
     @RequestMapping(value="/chat_msg/read", method = RequestMethod.POST)

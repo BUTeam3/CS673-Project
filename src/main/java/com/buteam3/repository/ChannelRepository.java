@@ -15,12 +15,18 @@ import com.buteam3.entity.Channel;
 public interface ChannelRepository extends JpaRepository<Channel, Long> {
 
     /**
-     * Find List of messages in database based on channelID
+     * Finds 1 Channel in database based on channel name
      * 
-     * @param channelid
-     * @return List of messages found
+     * @param channelname
+     * @return Channel found
      */	
-	Channel findByChannelname(String channelname);
+	Channel findByChannelname(String channelname); 
+    /**
+     * Finds 1 Channel in database based on taskid
+     * 
+     * @param taskid
+     * @return Channel found
+     */	
 	Channel findByTaskid(int taskid);
 
 }
