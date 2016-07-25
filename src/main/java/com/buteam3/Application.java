@@ -25,16 +25,18 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
+    TomcatEmbeddedServletContainerFactory tomcat = new TomcatEmbeddedServletContainerFactory() {
+        @Override
+        protected void postProcessContext(Context context) {
+            SecurityConstraint securityConstraint = new SecurityConstraint();
+            securityConstraint.setUserConstraint("CONFIDENTIAL");
+            SecurityCollection collection = new SecurityCollection();
+            collection.addPattern("/*");
+            securityConstraint.addCollection(collection);
+            context.addConstraint(securityConstraint);
+        }
+    };
+
 }
 
-TomcatEmbeddedServletContainerFactory tomcat = new TomcatEmbeddedServletContainerFactory() {
-    @Override
-    protected void postProcessContext(Context context) {
-        SecurityConstraint securityConstraint = new SecurityConstraint();
-        securityConstraint.setUserConstraint("CONFIDENTIAL");
-        SecurityCollection collection = new SecurityCollection();
-        collection.addPattern("/*");
-        securityConstraint.addCollection(collection);
-        context.addConstraint(securityConstraint);
-    }
-};
+
