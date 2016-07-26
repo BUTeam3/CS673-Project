@@ -1,3 +1,0 @@
-<Context>
-  <Valve className="org.apache.catalina.valves.RemoteIpValve" remoteIpHeader="x-forwarded-for" protocolHeader="x-forwarded-proto" portHeader="x-forwarded-port"/>
-</Context>
