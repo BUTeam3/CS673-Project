@@ -1,14 +1,15 @@
+//header of general chat opens and closes
 $(document).on('click', '.chat_header', function() {
     $('.chat_box').toggleClass('active');
     $('#chat_conversation').scrollTop($('#chat_conversation')[0].scrollHeight);
 });
+//Submits message to general chat
 $(document).on('submit', '#create_messge_form', function(){
 	var user = $('.navbar-text').text().split(' ')[1];
     var data = $('#message').val();
     $('#message').val('');
     $('#message').attr('disabled','disabled');
     $theForm = $(this);
-    // send xhr request
     $.ajax({
         type: "post",
         url: "/chat_msg/new",
@@ -16,10 +17,12 @@ $(document).on('submit', '#create_messge_form', function(){
             xhr.setRequestHeader('X-CSRF-Token', $('meta[name="_csrf"]').attr('content'))
         },
         data: {
+			//sends to general chat with user logged in and message
 			channelId: '0',
 			username: user,
             data: data
         },
+		//displays message in chat, scrolls to bottom, enables input box
         success: function (data) {
             $('#chat_conversation').append(data);
             $('#chat_conversation').scrollTop($('#chat_conversation')[0].scrollHeight);
@@ -29,8 +32,9 @@ $(document).on('submit', '#create_messge_form', function(){
     // prevent submitting again
     return false;
 });
+//refreshes chat to update from other users
 setInterval(function() {
-    var mid = $('.chat_msg').length ? $('.chat_msg:last').data('message-id') : 0;
+    var mid = $('#chat_conversation li').length ? -1 : 0;
     $.ajax({
         type: "POST",
         url: "/chat_msg/read",
@@ -38,7 +42,7 @@ setInterval(function() {
             xhr.setRequestHeader('X-CSRF-Token', $('meta[name="_csrf"]').attr('content'))
         },
         data: {
-            mid: mid,
+            mid: mid
         },
         success: function (data) {
             $('#chat_conversation').append(data);

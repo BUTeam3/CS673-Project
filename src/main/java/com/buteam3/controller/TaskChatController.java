@@ -25,8 +25,8 @@ import com.stormpath.sdk.servlet.application.ApplicationResolver;
 
 /**
  * Class is a controller handling the initial loading
- * of the UI for the issue tracker as well as modification to 
- * the database for task objects.
+ * of the UI for the issue chat box as well as modification to 
+ * the database for messages.
  * 
  * @author buteam3
  */
@@ -39,11 +39,27 @@ public class TaskChatController {
     private MessageRepository Msrepository;
 
     @Autowired
+    /**
+     * Constructor for Task Chat controller. Takes in 3 repositories
+     * of tasks, messages, and channels which are then loaded in UI. 
+     * 
+     * @param Record repository
+     * @param Channel repository
+     * @param Message repository 
+     */
     public TaskChatController(RecordRepository repository, ChannelRepository Chrepository, MessageRepository Msrepository) {
         this.repository = repository;
         this.Chrepository = Chrepository;
         this.Msrepository = Msrepository;
     }
+    /**
+     * Method loads a list of user accounts, adds them to a model map,
+     * then loads the messages to the UI using task_chat method.
+     * 
+     * @param model
+     * @param req
+     * @return 
+     */
     public String taskchat(ModelMap model, HttpServletRequest req) {
         Application application = ApplicationResolver.INSTANCE.getApplication(req);
         AccountList accounts = application.getAccounts();
@@ -52,6 +68,15 @@ public class TaskChatController {
         return "chat";
     }
 
+    /**
+     * Method called when a new message is entered. Saves the new message
+     * to the database through message repository using the channel ID.
+     * 
+     * @param model
+     * @param message
+     * @param channelId
+     * @return 
+     */
     @RequestMapping(value="/issue/new", method = RequestMethod.POST)
     public String insertData(ModelMap model, @Valid Message message, int channelId) {
 		Channel channel = Chrepository.findByTaskid(channelId);
@@ -60,11 +85,25 @@ public class TaskChatController {
         model.addAttribute("messages", message);
         return "fragments/chat";
     }
+    /**
+     * Loads a list of messages from database based on channel id
+     * 
+     * @param model model map linking messages to each task
+     */
     private void task_chat(ModelMap model) {
-        List<Message> message = Msrepository.findBychannelid(0);
+        List<Message> message = Msrepository.findBychannelid(-1);
         model.addAttribute("chatbox", message);
-        
     }
+    /**
+     * Method called when a new task is created and a channel needs to be created
+	 * to have an issue tracking to it. Then it saves the channel Id that the database
+	 * just created and sets the record with that channel Id.
+     * 
+     * @param model
+     * @param met
+     * @param data
+     * @return 
+     */
     @RequestMapping(value="/issue/updateChannel", method = RequestMethod.POST)
     public String updateChannel(ModelMap model,int met, String data) {
 		Channel channel;
@@ -85,11 +124,18 @@ public class TaskChatController {
 		return "fragments/chat";
     }
 	
+    /**
+     * Repopulates the chat box with new messages from other users
+     * 
+     * @param model
+	 * @param id
+     * @return 
+     */
     @RequestMapping(value="/issue/readmsg", method = RequestMethod.POST)
     public String readData(ModelMap model, int id) {
-		model = new ModelMap();
 		Channel channel = Chrepository.findByTaskid(id);
-        List<Message> messages = Msrepository.findBychannelid((int)channel.getChannelId());
+        List<Message> messages = Msrepository.findBychannelid((int)Chrepository.findByTaskid(id).getChannelId());
+        //List<Message> messages = Msrepository.findBychannelid(id);
         model.addAttribute("messages", messages);
         return "fragments/chat";
     }
