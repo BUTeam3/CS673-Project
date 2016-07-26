@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.sql.Timestamp;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -19,11 +20,11 @@ public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long mid;
+    //private Timestamp timestamp;
 	//Required fields
     @NotEmpty
     private String data;
     private int channelid;
-    //public String timestamp;
     private String username;
   
     /**
@@ -74,5 +75,21 @@ public class Message {
     public void setChannelId(int ChannelId) {
         this.channelid = ChannelId;
     }
-
-}
+    /**
+     * returns timestamp of task
+     * 
+     * @return timestamp of task as a Timestamp
+     */
+ /*   public Timestamp getTimestamp() {
+      return timestamp;
+    }
+*/    /**
+     * Set timestamp of the task
+     * 
+     * @param Timestamp timestamp
+     */
+/*    public void setTimestamp(Timestamp Timestamp) {
+        this.timestamp = Timestamp;
+    }
+*/
+ }
