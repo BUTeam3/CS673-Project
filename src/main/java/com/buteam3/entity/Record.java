@@ -21,10 +21,10 @@ public class Record {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long id;
 	private Long channelid;
+//	private Timestamp timestamp;
 	//Required fields
     @NotEmpty
     private String data;
-	private Timestamp timestamp;
     private int state;
 	private int difficulty;  
     
@@ -50,9 +50,9 @@ public class Record {
      * @return timestamp of task as a Timestamp
      */
 /*    public Timestamp getTimestamp() {
-       return timestamp;
-*/    }
-    /**
+      return timestamp;
+    }
+*/    /**
      * Set timestamp of the task
      * 
      * @param Timestamp timestamp
