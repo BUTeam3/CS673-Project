@@ -242,6 +242,7 @@ p {
     border: 1px solid #cacaca;
     border-radius: 3px;
     padding: 0 30px;
+    background-color: rgba(31,31,31,0.05);
 }
 
 .sp-form .has-error,
