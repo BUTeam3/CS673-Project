@@ -43,25 +43,27 @@ public class ChatController {
     }	
     
     /**
-     * 
+     * Gets accounts from thymeleaf and adds it to the model to be used
+	 * calls the chatmsg method and sends it the model to be populated by a list of messages
+	 *
      * @param model
      * @param req
      * @return 
      */
     public String chat(ModelMap model, HttpServletRequest req) {
-    Application application = ApplicationResolver.INSTANCE.getApplication(req);
-    AccountList accounts = application.getAccounts();
-    model.addAttribute("accounts", accounts);
-    chatmsg(model);
-    return "chat";
+		Application application = ApplicationResolver.INSTANCE.getApplication(req);
+		AccountList accounts = application.getAccounts();
+		model.addAttribute("accounts", accounts);
+		chatmsg(model);
+		return "chat";
     }
     /**
-     * Loads a a list of messages from database based on channel id
+     * Loads a list of messages from database based on channel id
      * 
      * @param model model map linking messages to chat UI chatbox
      */
     private void chatmsg(ModelMap model) {
-        List<Message> message = repository.findByMidGreaterThan(0);
+        List<Message> message = repository.findBychannelid(0);
         model.addAttribute("chatbox", message);
     }
     /**
@@ -70,30 +72,24 @@ public class ChatController {
      * 
      * @param model
      * @param message
-     * @param result
      * @return 
      */
     @RequestMapping(value="/chat_msg/new", method = RequestMethod.POST)
-    public String insertData(ModelMap model,
-                             @Valid Message message,
-                             BindingResult result) {
-        if (!result.hasErrors()) {
-            repository.save(message);
-        }
+    public String insertData(ModelMap model, @Valid Message message) {
+        repository.save(message);
         model.addAttribute("messages", message);
         return "fragments/chat";
     }
     /**
-     * Calls chatmsg to Load a a list of messages from database based on channel id
+     * Repopulates the chat box with new messages from other users
      * 
      * @param model
-     * @param message
-     * @param result
+	 * @param mid
      * @return 
      */
     @RequestMapping(value="/chat_msg/read", method = RequestMethod.POST)
-    public String readData(ModelMap model, Long mid) {
-        List<Message> messages = repository.findByMidGreaterThan(mid);
+    public String readData(ModelMap model, int mid) {
+        List<Message> messages = repository.findBychannelid(mid);
         model.addAttribute("messages", messages);
         return "fragments/chat";
     }
