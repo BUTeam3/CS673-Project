@@ -53,12 +53,10 @@ public class HomeController {
     @RequestMapping(value="/", method = RequestMethod.GET)
     public String home(ModelMap model, HttpServletRequest req) {
         Application application = ApplicationResolver.INSTANCE.getApplication(req);
+        AccountList accounts = application.getAccounts();
+        model.addAttribute("accounts", accounts);
         issue_tracker(model);
-        if(req.getScheme() != "https"){
-            return "home";
-        }else{
-            return "redirect:https://buteam3.herokuapp.com/";
-        }
+        return "home";
     }
 
     /**
