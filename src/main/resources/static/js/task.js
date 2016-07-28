@@ -120,6 +120,7 @@ setInterval(function() {
 			},
 			success: function (data) {
 				$('#task_conversation').append(data);
+				$('#task_conversation').scrollTop($('#task_conversation')[0].scrollHeight);
 			}
 		});
 	}
