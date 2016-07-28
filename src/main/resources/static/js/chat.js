@@ -48,7 +48,6 @@ setInterval(function() {
         },
         success: function (data) {
             $('#chat_conversation').append(data);
-            $('#chat_conversation').scrollTop($('#chat_conversation')[0].scrollHeight);
         }
     });
 }, 1000);
