@@ -27,6 +27,6 @@ public interface MessageRepository extends JpaRepository<Message, Long> {
      * @param channelid
      * @return List of messages found
      */	
-    List<Message> findByMidGreaterThan(long mid);
+    List<Message> findByMidGreaterThanAndChannelid(long mid, int channelid);
 
 }
