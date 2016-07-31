@@ -21,12 +21,12 @@ public class Testing {
 		wait= new WebDriverWait(driver, 30);
 		driver.manage().window().maximize();
 		driver.get("https://buteam3.herokuapp.com/");
-		//register();
+		register();
 		login();
-		//issue_testing();
-		//chat_testing();
+		issue_testing();
+		chat_testing();
 		issue_chat_testing();
-		//driver.quit();
+		driver.quit();
 	}
 	public static void register() throws InterruptedException{
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("password")));
